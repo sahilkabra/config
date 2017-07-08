@@ -2,7 +2,7 @@
 let $GIT_SSL_NO_VERIFY = 'true'
 
 " NVIM true colour
-" set termguicolors
+set termguicolors
 set background=light
 
 "some key mappings
@@ -12,8 +12,6 @@ map <Space> :
 
 " Use system clipboard by default
 set clipboard+=unnamedplus
-
-colorscheme default
 
 " Include plug
 set runtimepath+=~/.config/nvim
@@ -42,11 +40,57 @@ Plug 'easymotion/vim-easymotion'
     nmap en <Plug>(easymotion-next)
     nmap ep <Plug>(easymotion-prev)
 " }}}
-Plug 'neomake/neomake'                                          " file linting
+Plug 'w0rp/ale'     " file linting
 " {{{
-    " neomake use eslint for js
-    let g:neomake_javascript_enabled_makers = ["eslint"]
-    let g:neomake_typescript_enabled_makers = ["tsuquyomi"]
+"   " use only tslint for typescript
+    let g:ale_linters = {
+    \  'typescript': ['tslint'],
+    \}
+    " do not run on typing
+    let g:ale_lint_on_text_changed = 'never'
+    " do not run on enter
+    let g:ale_lint_on_enter = 0
+    " show errors in location list
+    let g:ale_open_list = 1
+    augroup filetype_jsx
+      autocmd!
+      au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+      au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+    augroup END
+" }}}
+
+" formatter
+Plug 'sbdchd/neoformat'
+" {{{
+    augroup fmt
+     autocmd!
+     autocmd BufWritePre * Neoformat
+    augroup END
+    "let g:neoformat_verbose = 1
+    let g:neoformat_typescript_prettier = {
+      \ 'exe': './node_modules/.bin/prettier',
+      \ 'args': ['--write', '--single-quote', '--parser typescript', '--print-width 80', '--trailing-comma all'],
+      \ 'stdin': 1,
+      \ }
+    let g:neoformat_enabled_typescript = ['prettier']
+    let g:neoformat_javascript_prettier = {
+      \ 'exe': './node_modules/.bin/prettier',
+      \ 'args': ['--single-quote', '--print-width 80', '--trailing-comma all'],
+      \ 'stdin': 1,
+      \ }
+    let g:neoformat_enabled_javascript = ['prettier']
+    let g:neoformat_json_prettier = {
+      \ 'exe': './node_modules/.bin/prettier',
+      \ 'args': ['--write', '--print-width 80'],
+      \ 'stdin': 1,
+      \ }
+    let g:neoformat_enabled_json = ['prettier']
+    let g:neoformat_scss_prettier = {
+      \ 'exe': './node_modules/.bin/prettier',
+      \ 'args': ['--write', '--single-quote', '--print-width 80', '--trailing-comma all'],
+      \ 'stdin': 1,
+      \ }
+    let g:neoformat_enabled_scss = ['prettier']
 " }}}
 Plug 'will133/vim-dirdiff'
 Plug 'https://github.com/ludovicchabant/vim-gutentags'          " background tag generation
@@ -101,11 +145,11 @@ Plug 'christoomey/vim-tmux-navigator'
 " JSON
 Plug 'elzr/vim-json', {'for': 'json'}
 
+Plug 'NLKNguyen/papercolor-theme'
 
 " commented out, previously used, enable if missed
 " Plug 'davidhalter/jedi-vim', {'for': 'python'}                  " Python Completion in VIM
 " Plug 'mhartington/nvim-typescript', {'for': 'typescript'}
-" Plug 'jlesquembre/peaksea'
 " Plug 'vim-syntastic/syntastic'                                   " file linting
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'jsbeautify'
@@ -117,6 +161,7 @@ Plug 'elzr/vim-json', {'for': 'json'}
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'mxw/vim-jsx', {'for': 'javascript'}
 " Plug 'https://github.com/ternjs/tern_for_vim', {'do': 'npm install'} " def, type, rename js variable etc
+" Plug 'jlesquembre/peaksea'
 "
 " Replaced by fzf
 " Plug 'https://github.com/mileszs/ack.vim'                       " for silversearcher
@@ -125,10 +170,21 @@ Plug 'elzr/vim-json', {'for': 'json'}
 "     let g:ackprg = 'ag --vimgrep'
 "   endif
 " }}}
-
+"
+" Replace by ale
+" Plug 'neomake/neomake'                                          " file linting
+" {{{
+    " neomake use eslint for js
+"    let g:neomake_javascript_enabled_makers = ["eslint"]
+"    let g:neomake_jsx_enabled_makers = ['eslint']
+"    let g:neomake_typescript_enabled_makers = ["tslint"]
+"    let g:neomake_python_enabled_makers = ["frosted"]
+    " run neomake on write
+"    autocmd! BufWritePost * Neomake
+"    let g:neomake_open_list = 2
+" }}}
 
 call plug#end()            " required
-
 
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
@@ -213,6 +269,8 @@ nnoremap ncr J
 nnoremap csp <Plug>VSurround
 
 set cc=120
+
+colorscheme PaperColor
 
 set statusline= "clear status line
 "set statusline=[%n]\ %10F%m\ %y\ [%{&ff}]\ \ %=\ %l/%L\ [%c]\ %p%%
