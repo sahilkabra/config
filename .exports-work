@@ -1,3 +1,0 @@
-export XPLAN_BASE=~/src/xplanbase
-export GPG_AGENT_INFO=${HOME}/.gnupg/S.gpg-agent:0:1
-export PYTHONPATH=/usr/local/bin
