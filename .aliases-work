@@ -3,23 +3,44 @@ alias wchrome='google-chrome --profile-directory="Profile 1"'
 alias pcrome='google-chrome --profile-directory="Default"'
 
 # Xplan Aliases
-alias xplan-src='cd $XPLAN_BASE/version/99.99.999'
+hash -d -- xplanbase=~ws/xplanbase
+hash -d -- xplan-src=~xplanbase/version/99.99.999
+alias xplan-src='cd ~xplan-src'
 alias xplan-log='xplan-log() { cd sites/$1/log };xplan-log'
 alias xplan-tail-log='xplan-tail-log() { tail -F sites/$1/log/server.log };xplan-tail-log'
+# alias xplan-nose='XFUDGE_SITENAME=test nosetests -s -c ${XPLAN_BASE}/version/9.999.999/src/py/nose-developer.cfg'
+function xplan-nose() {
+    cd ~xplan-src/src/py
+    XFUDGE_SITENAME=test pytest $1
+}
 
-# Apex
-alias apex='cd ~/src/xplanbase/apps/apex/99.99.999'
-alias apex-start='DONT_CLEAR_CONSOLE=true DEVSERVER_QUIET=false PORT=65010 BROWSER=none npm run start'
+# Labs
+hash -d -- labs=~ws/labs
+hash -d -- oui=~labs/apps/iui
+hash -d -- apex=~labs/apps/xplan-apex
+alias apex='cd ~apex'
+#alias apex-start='DONT_CLEAR_CONSOLE=true DEVSERVER_QUIET=false PORT=65010 BROWSER=none npm run start'
 
 # Sql Server start
 function sqlserver-start() {
     # docker run -e 'ACCEPT_EULA=Y' \
-    #     -e 'MSSQL_SA_PASSWORD=passw0rded' \
-    #     -e 'MSSQL_PID=Developer' \
-    #     --name sqlserver \
+    #     -e 'MSSQL_SA_PASSWORD=Passw0rded' \
+    #     --name sqlserver-fts \
     #     -p 1433:1433 \
-    #     -v /home/sahilkabra/.sqlserver/data:/var/opt/mssql \
-    #     -d microsoft/mssql-server-linux:2017-latest
+    #     -v /home/sqlserver/data:/var/opt/mssql \
+    #     -d microsoft/mssql-server-linux
     docker start sqlserver
 }
 alias sqlserver-stop='docker stop sqlserver'
+
+function sqlserverfts-start() {
+    # docker run -e 'ACCEPT_EULA=Y' \
+    #     -e 'MSSQL_SA_PASSWORD=Passw0rded' \
+    #     --name sqlserver-fts \
+    #     -p 1433:1433 \
+    #     -v /home/sqlserver/data:/var/opt/mssql \
+    #     -d microsoft/mssql-server-linux
+    docker start sqlserver-fts
+}
+alias sqlserverfts-stop='docker stop sqlserver-fts'
+

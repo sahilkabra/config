@@ -204,6 +204,7 @@ bar {
 # remove titlebar
 for_window [class="Chromium|Firefox|Google-chrome"] border pixel 1
 for_window [class="Xfce4-terminal|Termite"] border pixel 1
+for_window [class="Slack"] border pixel 1
 
 # switch to named workspace
 # mod+numpad 0

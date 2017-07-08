@@ -201,13 +201,14 @@ myAdditionalKeys =
   ]
 
 ------------------------------------------------------------------------
--- Launch applications mode using Mod+x
+-- Launch App Mode
 
 appSubmap = ((0, xK_a), submap . M.fromList $
   [
     launchFirefox
   , launchPersonalChrome
   , launchPycharm
+  , launchSlack
   , launchVsCode
   , launchWorkChrome
   , screenshot
@@ -486,6 +487,7 @@ help = unlines ["The modifier key is 'lalt'.",
     "    c                              Launch Chrome",
     "    w                              Launch Work Chrome",
     "    p                              Launch Pycharm",
+    "    s                              Launch Slack",
     "    print                          Launch Shutter for screenshot",
     "    v                              Launch VSCode",
     "",

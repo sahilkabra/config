@@ -1,0 +1,2 @@
+export XPLAN_BASE=~/src/xplanbase
+export PYTHONPATH=/usr/local/bin
