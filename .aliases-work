@@ -1,0 +1,8 @@
+# Helpful aliases
+alias wchrome='google-chrome --profile-directory="Profile 1"'
+alias pcrome='google-chrome --profile-directory="Default"'
+
+# Xplan Aliases
+alias xplan-src='cd $XPLAN_BASE/version/99.99.999'
+alias xplan-log='xplan-log() { cd sites/$1/log };xplan-log'
+alias xplan-tail-log='xplan-tail-log() { tail -F sites/$1/log/server.log };xplan-tail-log'

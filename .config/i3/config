@@ -1,0 +1,272 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+# Variables
+## Modifier Keys
+set $mod Mod1
+set $alt Mod1
+
+## named workspaces
+set $ws0 "0"
+set $ws1 "1: app-gui"
+set $ws2 "2: off-code"
+set $ws3 "3: personal"
+set $ws4 "4: term"
+set $ws5 "5: work"
+set $ws6 "6: other"
+set $ws7 "7: messengers"
+set $ws8 "8: vm"
+
+# create new ws
+bindsym $mod+Shift+n exec --no-startup-id i3-new-ws
+
+# cycle through ws
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+## monitors
+set $mon1 VGA-1
+set $mon2 VGA-2
+set $mon3 VGA-3
+#
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+#font pango:monospace 8
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:Ubuntu Mono 10px
+# font pango:Inconsolata 10px
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $left h
+set $down j
+set $up k
+set $right l
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec termite
+bindsym $mod+Shift+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+bindsym $alt+F4 kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+bindsym $alt+F2 exec dmenu_run
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+#bindsym $mod+h split h
+
+# split in vertical orientation
+#bindsym $mod+v split v
+#
+# toggle split orientation
+bindsym $mod+t split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command i3status --config ~/.config/i3/status.config
+    separator_symbol " "
+    colors {
+        background #eaeaea
+        statusline #674523
+        separator #eaeaea
+        focused_background #aaaaaa
+
+        # colorclass        border  background  text
+        focused_workspace   #000000 #000000     #ffffff
+    }
+    tray_output primary
+    tray_padding 0
+}
+
+# remove titlebar
+for_window [class="Chromium|Firefox|Google-chrome"] border pixel 1
+for_window [class="Xfce4-terminal|Termite"] border pixel 1
+
+# switch to named workspace
+# mod+numpad 0
+bindcode $mod+90 workspace $ws0
+# mod+top 0
+bindcode $mod+19 workspace $ws0
+# mod+numpad 1
+bindcode $mod+87 workspace $ws1
+# mod+top 1
+bindcode $mod+10 workspace $ws1
+# mod+numpad 2
+bindcode $mod+88 workspace $ws2
+# mod+top 2
+bindcode $mod+11 workspace $ws2
+# mod+numpad 3
+bindcode $mod+89 workspace $ws3
+# mod+top 3
+bindcode $mod+12 workspace $ws3
+# mod+numpad 4
+bindcode $mod+83 workspace $ws4
+# mod+top 4
+bindcode $mod+13 workspace $ws4
+# mod+numpad 5
+bindcode $mod+84 workspace $ws5
+# mod+top 5
+bindcode $mod+14 workspace $ws5
+# mod+numpad 6
+bindcode $mod+85 workspace $ws6
+# mod+top 6
+bindcode $mod+15 workspace $ws6
+# mod+numpad 7
+bindcode $mod+79 workspace $ws7
+# mod+top 7
+bindcode $mod+16 workspace $ws7
+# mod+numpad 8
+bindcode $mod+80 workspace $ws8
+# mod+top 8
+bindcode $mod+17 workspace $ws8
+
+# move focused container to workspace
+bindcode $mod+Shift+87 move container to workspace $ws1
+bindcode $mod+Shift+88 move container to workspace $ws2
+bindcode $mod+Shift+89 move container to workspace $ws3
+bindcode $mod+Shift+83 move container to workspace $ws4
+bindcode $mod+Shift+84 move container to workspace $ws5
+
+# open ws on specific monitors
+workspace $ws0 output $mon1
+workspace $ws1 output $mon2
+workspace $ws2 output $mon2
+workspace $ws3 output $mon2
+workspace $ws4 output $mon3
+workspace $ws5 output $mon2
+workspace $ws7 output $mon1
+workspace $ws8 output $mon3
+
+# lock screen
+bindcode $mod+135 exec --no-startup-id i3lock -c '#333333'
+
+# Keyboard maps
+bindsym $mod+Scroll_Lock exec --no-startup-id "setxkbmap -layout us -option 'ctrl:nocaps,shift:both_capslock'"
+bindsym $mod+Pause exec --no-startup-id "setxkbmap -layout us -option 'ctrl:nocaps,shift:both_capslock' -variant dvp"
+
+# focus follow mouse
+focus_follows_mouse no
+
+# should mouse be warped to currently focussed ws
+mouse_warping none
+
+# Mod+Middle mouse button click over any window will kill it
+bindsym --whole-window --release $mod+button2 kill
+
+# mod+o switches to launcher mode
+set $launcher Launch: [c]hrome [w]ork-chrome [p]ycharm
+bindsym $mod+o mode "$launcher"
+
+mode "$launcher" {
+    bindsym c exec "google-chrome --profile-directory='Default'", mode "default"
+    bindsym w exec "google-chrome --profile-directory='Profile 1'", mode "default"
+    bindsym p exec "pycharm", mode "default"
+    bindsym o open, mode "default"
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}

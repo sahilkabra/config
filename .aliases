@@ -1,0 +1,18 @@
+# ls helpers
+alias lg='LANG=C ls --group-directories-first -F --color'
+alias lgd='LANG=C lg -al'
+alias ll='lg -l'
+alias la='lg -a'
+alias lla='ll -a'
+
+# do not less if output fits one screen
+alias less='less -FX'
+
+# who uses vi!
+alias vi='vim'
+
+# tmux always with 256 colors
+alias tmux='tmux -2'
+
+# config files alias
+alias config='/usr/bin/git --git-dir=$HOME/src/config --work-tree=$HOME'
