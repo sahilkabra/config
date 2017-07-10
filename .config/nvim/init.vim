@@ -2,7 +2,7 @@
 let $GIT_SSL_NO_VERIFY = 'true'
 
 " NVIM true colour
-set termguicolors
+"set termguicolors
 set background=light
 
 "some key mappings
