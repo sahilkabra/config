@@ -95,6 +95,25 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move workspace
+bindsym $mod+Ctrl+$left move workspace to output left
+bindsym $mod+Ctrl+$down move workspace to output down
+bindsym $mod+Ctrl+$up move workspace to output up
+bindsym $mod+Ctrl+$right move workspace to output right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Down move workspace to output down
+bindsym $mod+Ctrl+Up move workspace to output up
+bindsym $mod+Ctrl+Right move workspace to output right
+
+# move focused container to workspace
+bindcode $mod+Shift+87 move container to workspace $ws1
+bindcode $mod+Shift+88 move container to workspace $ws2
+bindcode $mod+Shift+89 move container to workspace $ws3
+bindcode $mod+Shift+83 move container to workspace $ws4
+bindcode $mod+Shift+84 move container to workspace $ws5
+
 # split in horizontal orientation
 #bindsym $mod+h split h
 
@@ -224,13 +243,6 @@ bindcode $mod+80 workspace $ws8
 # mod+top 8
 bindcode $mod+17 workspace $ws8
 
-# move focused container to workspace
-bindcode $mod+Shift+87 move container to workspace $ws1
-bindcode $mod+Shift+88 move container to workspace $ws2
-bindcode $mod+Shift+89 move container to workspace $ws3
-bindcode $mod+Shift+83 move container to workspace $ws4
-bindcode $mod+Shift+84 move container to workspace $ws5
-
 # open ws on specific monitors
 workspace $ws0 output $mon1
 workspace $ws1 output $mon2
@@ -243,6 +255,9 @@ workspace $ws8 output $mon3
 
 # lock screen
 bindcode $mod+135 exec --no-startup-id i3lock -c '#333333'
+
+# screenshot using the Print key
+bindcode $mod+107 exec --no-startup-id "shutter"
 
 # Keyboard maps
 bindsym $mod+Scroll_Lock exec --no-startup-id "setxkbmap -layout us -option 'ctrl:nocaps,shift:both_capslock'"
@@ -260,7 +275,6 @@ bindsym --whole-window --release $mod+button2 kill
 # mod+o switches to launcher mode
 set $launcher Launch: [c]hrome [w]ork-chrome [p]ycharm
 bindsym $mod+o mode "$launcher"
-
 mode "$launcher" {
     bindsym c exec "google-chrome --profile-directory='Default'", mode "default"
     bindsym w exec "google-chrome --profile-directory='Profile 1'", mode "default"
@@ -271,4 +285,5 @@ mode "$launcher" {
     bindsym Return mode "default"
 }
 
+# run compton, the composite manager
 exec compton

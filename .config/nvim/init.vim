@@ -44,7 +44,7 @@ Plug 'w0rp/ale'     " file linting
 " {{{
 "   " use only tslint for typescript
     let g:ale_linters = {
-    \  'typescript': ['tslint'],
+    \  'typescript': [''],
     \}
     " do not run on typing
     let g:ale_lint_on_text_changed = 'never'
