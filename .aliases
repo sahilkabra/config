@@ -4,6 +4,7 @@ alias lgd='LANG=C lg -al'
 alias ll='lg -l'
 alias la='lg -a'
 alias lla='ll -a'
+alias lst='tree -L 1 -F --dirsfirst --noreport -C'
 
 # do not less if output fits one screen
 alias less='less -FX'

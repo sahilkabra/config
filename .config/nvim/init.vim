@@ -19,27 +19,7 @@ set runtimepath+=~/.config/nvim
 call plug#begin('~/.config/nvim/plugged')
 " Keep Plugin commands between vundle#begin/end.
 "
-" plugin on GitHub repo
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree',
-" {{{
-    nmap ntt :NERDTreeToggle<cr>
-    nmap ntf :NERDTreeFind<cr>
-" }}}
-Plug 'majutsushi/tagbar'                                        " show tags on the side
-Plug 'tmhedberg/SimpylFold'                                     " vim folding
-Plug 'tpope/vim-surround'
-" {{{
-    " no surround mappings
-    let g:surround_no_mappings = 1
-" }}}
-Plug 'easymotion/vim-easymotion'
-" {{{
-    " easy motion mappings
-    nmap es <Plug>(easymotion-sn)
-    nmap en <Plug>(easymotion-next)
-    nmap ep <Plug>(easymotion-prev)
-" }}}
 Plug 'w0rp/ale'     " file linting
 " {{{
 "   " use only tslint for typescript
@@ -92,12 +72,14 @@ Plug 'sbdchd/neoformat'
       \ }
     let g:neoformat_enabled_scss = ['prettier']
 " }}}
+
 Plug 'will133/vim-dirdiff'
 Plug 'https://github.com/ludovicchabant/vim-gutentags'          " background tag generation
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install -all'}  " fuzzy finder for vim
 Plug 'junegunn/fzf.vim'                                         " vim keybindings for fzf
 " {{{
     let g:fzf_nvim_statusline = 0 " disable status line overwriting
+    let g:fzf_buffers_jump = 1 " use existing buffer if possible
     " Normal mode mappings
     nmap fzo :FZF<cr>
     nmap fz! :FZF!<cr>
@@ -124,6 +106,9 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'} " syntax fo
 
 " Type script plugins
 Plug 'leafgarland/typescript-vim',  " syntax highlight for ts
+" {{{
+    let g:typescript_indent_disable = 1
+" }}}
 Plug 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
@@ -139,12 +124,36 @@ Plug 'Quramy/tsuquyomi', {'for': 'typescript'} " use tsserver for omnicomplete a
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}         " PEP8 compatible indent for python
 Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
 
-" tmux-vim seamless navigation
-Plug 'christoomey/vim-tmux-navigator'
-
 " JSON
 Plug 'elzr/vim-json', {'for': 'json'}
 
+" postcss syntax
+Plug 'stephenway/postcss.vim'
+
+" --utility plugins
+Plug 'scrooloose/nerdtree',
+" {{{
+    nmap ntt :NERDTreeToggle<cr>
+    nmap ntf :NERDTreeFind<cr>
+" }}}
+Plug 'majutsushi/tagbar'                                        " show tags on the side
+Plug 'tmhedberg/SimpylFold'                                     " vim folding
+Plug 'tpope/vim-surround'
+" {{{
+    " no surround mappings
+    let g:surround_no_mappings = 1
+" }}}
+Plug 'easymotion/vim-easymotion'
+" {{{
+    " easy motion mappings
+    nmap es <Plug>(easymotion-sn)
+    nmap en <Plug>(easymotion-next)
+    nmap ep <Plug>(easymotion-prev)
+" }}}
+" tmux-vim seamless navigation
+Plug 'christoomey/vim-tmux-navigator'
+
+" colors
 Plug 'NLKNguyen/papercolor-theme'
 
 " commented out, previously used, enable if missed
