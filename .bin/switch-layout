@@ -1,0 +1,17 @@
+#!/bin/zsh
+# LICENSE: PUBLIC DOMAIN
+# switch between my layouts
+
+if [[ -n "$1" ]]; then
+  setxkbmap $1
+else
+  layout=$(setxkbmap -query | awk '/variant/{print $2}')
+  case $layout in
+    dvp)
+      setxkbmap -layout us
+      ;;
+    *)
+      setxkbmap -layout us -variant 'dvp'
+      ;;
+  esac
+fi
