@@ -76,6 +76,24 @@ zstyle ':prezto:module:autosuggestions:color' found 'fg=red'
 
 export NVM_LAZY_LOAD=true
 zplug "lukechilds/zsh-nvm"
+# load nvm based on nvm rc
+# autoload -U add-zsh-hook
+# load-nvmrc() {
+#  local node_version="$(nvm version)"
+#  local nvmrc_path="$(nvm_find_nvmrc)"
+#
+#  if [ -n "$nvmrc_path"]; then
+#    local nvmrc_node_version = $(nvm version "$(cat "${nvmrc_path}")")
+#
+#    if [ "$nvmrc_node_version" = "N/A" ]; then
+#      nvm install
+#    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+#      nvm use
+#    fi
+#  fi
+#}
+#add-zsh-hook chpwd load-nvmrc
+
 zplug "docker/compose", use:contrib/completion/zsh
 
 # check if all plugins installed, else prompt to install
@@ -93,6 +111,7 @@ zplug load
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
 
 # plugins used before, add if missed
 # zplug "modules/git", from:prezto
