@@ -1,6 +1,12 @@
 #!/bin/zsh
 # LICENSE: PUBLIC DOMAIN
 # switch between my layouts
+#
+# check if no caps options is set; if not, set it
+kbOptions=$(setxkbmap -query | awk '/option/{print $2}')
+if [ -z "$kbOptions" ]; then
+  setxkbmap -option 'ctrl:nocaps,shift:both_capslock'
+fi
 
 if [[ -n "$1" ]]; then
   setxkbmap $1

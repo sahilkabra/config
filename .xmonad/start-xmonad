@@ -49,9 +49,6 @@ trayer \
 
 xsetroot -solid '#333333'
 
-# set keyboard options here
-setxkbmap -option 'ctrl:nocaps,shift:both_capslock'
-
 # start some default apps here
 
 # Now, finally, start xmonad
