@@ -111,7 +111,7 @@ systemSubmap = ((myModMask, xK_s), submap . M.fromList $
   , suspend
   , poweroff
   ])
-lockCommand = "xset dpms force off; i3lock"
+lockCommand = "xset dpms force off; slock"
 locker = ((0, xK_l), spawn lockCommand)
 suspend = ((0, xK_s), spawn "systemctl suspend")
 poweroff = ((0, xK_h), spawn "poweroff")

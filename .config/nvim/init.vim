@@ -203,9 +203,9 @@ set sidescrolloff=5
 set listchars=eol:$,tab:¦·,trail:·,extends:>,precedes:<
 set backspace=indent,eol,start
 set list
-set tabstop=2 "One tab equal to 4 spaces
-set shiftwidth=2 "Indent key will shift 4 spaces
-set softtabstop=2 "Tab in insert mode will insert 4 spaces
+set tabstop=4 "One tab equal to 4 spaces
+set shiftwidth=4 "Indent key will shift 4 spaces
+set softtabstop=4 "Tab in insert mode will insert 4 spaces
 set noautochdir
 set incsearch
 set smartcase

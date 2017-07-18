@@ -51,5 +51,8 @@ xsetroot -solid '#333333'
 
 # start some default apps here
 
+# lock after 10 min no user activity
+xautolock -time 10 -locker slock &
+
 # Now, finally, start xmonad
 exec xmonad-session
