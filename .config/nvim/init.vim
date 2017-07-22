@@ -156,6 +156,14 @@ Plug 'christoomey/vim-tmux-navigator'
 " colors
 Plug 'NLKNguyen/papercolor-theme'
 
+" quick searching; fzf doesn't fulfill everything
+Plug 'https://github.com/mileszs/ack.vim'                       " for silversearcher
+" {{{
+   if executable('ag')
+     let g:ackprg = 'ag --vimgrep'
+   endif
+" }}}
+
 " commented out, previously used, enable if missed
 " Plug 'davidhalter/jedi-vim', {'for': 'python'}                  " Python Completion in VIM
 " Plug 'mhartington/nvim-typescript', {'for': 'typescript'}
@@ -172,14 +180,7 @@ Plug 'NLKNguyen/papercolor-theme'
 " Plug 'https://github.com/ternjs/tern_for_vim', {'do': 'npm install'} " def, type, rename js variable etc
 " Plug 'jlesquembre/peaksea'
 "
-" Replaced by fzf
-" Plug 'https://github.com/mileszs/ack.vim'                       " for silversearcher
-" {{{
-"   if executable('ag')
-"     let g:ackprg = 'ag --vimgrep'
-"   endif
-" }}}
-"
+
 " Replace by ale
 " Plug 'neomake/neomake'                                          " file linting
 " {{{
