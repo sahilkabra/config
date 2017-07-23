@@ -11,7 +11,7 @@ map , <leader>
 map <Space> :
 
 " Use system clipboard by default
-set clipboard+=unnamedplus
+"set clipboard+=unnamedplus
 
 " Include plug
 set runtimepath+=~/.config/nvim
