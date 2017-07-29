@@ -1,3 +1,4 @@
 export JAVA_HOME=/opt/java
-export PATH=${HOME}/.bin:$PATH
+export CABAL_BIN=${HOME}/Library/Haskell/bin
+export PATH=${CABAL_BIN}:${HOME}/.bin:$PATH
 export SAL_USE_VCLPLUGIN=gen

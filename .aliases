@@ -1,5 +1,6 @@
+# use gls instead of ls on osx
 # ls helpers
-alias ls='LANG=C ls --color'
+alias ls='LANG=C gls --color'
 alias lg='ls --group-directories-first -F'
 alias lgd='LANG=C lg -al'
 alias ll='lg -l'
@@ -10,6 +11,7 @@ alias lst='tree -L 1 -F --dirsfirst --noreport -C -a'
 # do not less if output fits one screen
 alias less='less -FX'
 
+alias vim='nvim'
 # who uses vi!
 alias vi='vim'
 
