@@ -258,11 +258,13 @@ systemSubmap = ((0, xK_s), submap . M.fromList $
     locker
   , suspend
   , poweroff
+  , sysrestart
   ])
 lockCommand = "xset dpms force off; slock"
 locker = ((0, xK_l), spawn lockCommand)
 suspend = ((0, xK_s), spawn "systemctl suspend")
 poweroff = ((0, xK_h), spawn "poweroff")
+sysrestart = ((0, xK_r), spawn "reboot")
 
 -- not working to figure out why
 xf86controls XConfig {XMonad.modMask = modMask} = M.fromList $
@@ -429,6 +431,7 @@ help = unlines ["The modifier key is 'lalt'.",
     "",
     "-- System Command Mode",
     "    l                              Lock",
+    "    r                              Restart",
     "    s                              Suspend",
     "    h                              Halt",
     "",

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-s_vim=$(tmux ls | grep vim | cut -c 1)
+s_code=$(tmux ls | grep code | cut -c 1)
 s_wk=$(tmux ls | grep wk | cut -c 1)
 s_personal=$(tmux ls | grep personal | cut -c 1)
 
-if [[ -z ${s_vim} ]]
+if [[ -z ${s_code} ]]
 then
-    tmux new-session -d -s vim
+    tmux new-session -d -s code
 fi
 if [[ -z ${s_wk} ]]
 then

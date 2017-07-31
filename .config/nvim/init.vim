@@ -24,7 +24,7 @@ Plug 'w0rp/ale'     " file linting
 " {{{
 "   " use only tslint for typescript
     let g:ale_linters = {
-    \  'typescript': [''],
+    \  'typescript': ['tslint'],
     \}
     " do not run on typing
     let g:ale_lint_on_text_changed = 'never'
@@ -49,13 +49,13 @@ Plug 'sbdchd/neoformat'
     "let g:neoformat_verbose = 1
     let g:neoformat_typescript_prettier = {
       \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--write', '--single-quote', '--parser typescript', '--print-width 80', '--trailing-comma all'],
+      \ 'args': ['--write', '--single-quote', '--parser typescript', '--print-width 80', '--trailing-comma all', '--tab-width 4'],
       \ 'stdin': 1,
       \ }
     let g:neoformat_enabled_typescript = ['prettier']
     let g:neoformat_javascript_prettier = {
       \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--single-quote', '--print-width 80', '--trailing-comma all'],
+      \ 'args': ['--single-quote', '--print-width 80', '--trailing-comma all', '--tab-width 4'],
       \ 'stdin': 1,
       \ }
     let g:neoformat_enabled_javascript = ['prettier']
@@ -199,7 +199,7 @@ call plug#end()            " required
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 set encoding=utf-8
-set scrolloff=5
+set scrolloff=999
 set sidescrolloff=5
 set listchars=eol:$,tab:¦·,trail:·,extends:>,precedes:<
 set backspace=indent,eol,start
