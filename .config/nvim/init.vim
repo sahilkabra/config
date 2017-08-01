@@ -130,6 +130,9 @@ Plug 'elzr/vim-json', {'for': 'json'}
 " postcss syntax
 Plug 'stephenway/postcss.vim'
 
+" elm
+Plug 'elmcast/elm-vim'
+
 " --utility plugins
 Plug 'scrooloose/nerdtree',
 " {{{
