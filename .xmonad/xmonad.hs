@@ -22,6 +22,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Accordion
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
+import XMonad.Layout.IndependentScreens
 import XMonad.Util.Run (spawnPipe)
 
 ------------------------------------------------------------------------
@@ -103,7 +104,7 @@ myBorderWidth   = 1
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 myWorkspaces =
-  ["1:home","2:personal","3:code","4:app","5:work","6:vm","7:messengers"] ++ map show [8 .. 12]
+  withScreens 3 (["1:home","2:personal","3:code","4:app","5:work","6:vm","7:messengers"] ++ map show [8 .. 12])
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -146,9 +147,17 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-[F1..F12], Switch to workspace N
     -- mod-shift-[F1..F12], Move client to workspace N
     --
-    [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_F1 .. xK_F12]
+    [((m .|. modm, k), windows $ onCurrentScreen f i)
+        | (i, k) <- zip (workspaces' conf) [xK_F1 .. xK_F12]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+    ++
+
+    -- mod-[Numpad keys], switch to workspace N
+    -- mod-shift-[Numpad keys], move client to workspace N
+    [((m .|. modm, k), windows $ onCurrentScreen f i)
+        | (i, k) <- zip (workspaces' conf) numPadKeys
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+    ]
     ++
 
     --
@@ -173,11 +182,6 @@ myAdditionalKeys =
   , volumeUp
   , volumeDown
   , volumeMute
-  ]
-  ++
-  [((m .|. myModMask, k), windows $ f i)
-    | (i, k) <- zip myWorkspaces numPadKeys
-    , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
   ]
 
 ------------------------------------------------------------------------
