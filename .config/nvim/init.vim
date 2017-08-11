@@ -55,13 +55,13 @@ Plug 'sbdchd/neoformat'
     let g:neoformat_enabled_typescript = ['prettier']
     let g:neoformat_javascript_prettier = {
       \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--single-quote', '--print-width 80', '--trailing-comma all', '--tab-width 4'],
+      \ 'args': ['--single-quote', '--print-width 80', '--trailing-comma es5', '--tab-width 4'],
       \ 'stdin': 1,
       \ }
     let g:neoformat_enabled_javascript = ['prettier']
     let g:neoformat_json_prettier = {
       \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--write', '--print-width 80'],
+      \ 'args': ['--write', '--print-width 80', '--tab-width 4'],
       \ 'stdin': 1,
       \ }
     let g:neoformat_enabled_json = ['prettier']

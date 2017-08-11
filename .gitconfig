@@ -55,7 +55,7 @@
     unstage = reset HEAD
     last = log -1
     mini = !"git logp -10"
-    comv = commit --no-verify
+    comnv = commit --no-verify
 [push]
     default = simple
 [gitreview]
