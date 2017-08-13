@@ -88,7 +88,7 @@ myFocusFollowsMouse = False
 
 -- Whether clicking on a window to focus also passes the click to the window
 myClickJustFocuses :: Bool
-myClickJustFocuses = True
+myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
@@ -98,10 +98,6 @@ myBorderWidth   = 1
 -- By default we use numeric strings, but any string may be used as a
 -- workspace name. The number of workspaces is determined by the length
 -- of this list.
---
--- A tagging example:
---
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 myWorkspaces =
   withScreens 3 (["1:home","2:personal","3:code","4:app","5:work","6:vm","7:messengers"] ++ map show [8 .. 12])
