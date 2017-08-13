@@ -15,6 +15,7 @@ import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
 
 import XMonad
+import XMonad.Actions.CycleWS
 import XMonad.Actions.Submap
 import XMonad.Actions.WindowBringer
 import XMonad.Hooks.DynamicLog
@@ -130,6 +131,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+
+    -- Focus Windows with alt tab or alt-shift tab
+    , ((modm              , xK_Tab     ), windows W.focusDown)
+    , ((modm .|. shiftMask, xK_Tab     ), windows W.focusUp)
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -303,6 +308,9 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
                                        >> windows W.shiftMaster))
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
+    -- button7, Switch to next workspace
+    --   , ((0, 7), (\_ -> nextWS))
+    --    , ((0, 6), (\_ -> prevWS))
     ]
 
 ------------------------------------------------------------------------
@@ -411,6 +419,8 @@ help = unlines ["The modifier key is 'lalt'.",
     "mod-Shift-[F1..F9]                 Move client to workspace N",
     "mod-{w,e,r}                        Switch to physical/Xinerama screens 1, 2, or 3",
     "mod-Shift-{w,e,r}                  Move client to screen 1, 2, or 3",
+    "mod-tab                            Focus next window",
+    "mod-shift-tab                      Focus previous window",
     "",
     "-- Command Mode",
     "mod-c                              Enter Command Mode",
