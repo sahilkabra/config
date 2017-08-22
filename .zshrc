@@ -14,10 +14,6 @@ autoload -Uz compinit
 compinit
 zmodload -i zsh/complist
 
-autoload -Uz promptinit
-promptinit
-prompt redhat
-
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=1024                       # big history
@@ -28,7 +24,6 @@ setopt hist_reduce_blanks           # trim blanks
 setopt hist_verify                  # verify before executing commands
 setopt inc_append_history           # add commands as they are typed
 setopt share_history                # share history between sessions
-bindkey -e
 
 # settings
 setopt auto_remove_slash
@@ -71,30 +66,14 @@ zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "modules/environment", from:prezto
 zplug "modules/autosuggestions", from:prezto
-zstyle ':prezto:module:autosuggestions' color 'yes'
-zstyle ':prezto:module:autosuggestions:color' found 'fg=red'
+# {{{
+    zstyle ':prezto:module:autosuggestions' color 'yes'
+    zstyle ':prezto:module:autosuggestions:color' found 'fg=red'
+# }}}
 
 export NVM_LAZY_LOAD=true
 zplug "lukechilds/zsh-nvm"
-# load nvm based on nvm rc
-# autoload -U add-zsh-hook
-# load-nvmrc() {
-#  local node_version="$(nvm version)"
-#  local nvmrc_path="$(nvm_find_nvmrc)"
-#
-#  if [ -n "$nvmrc_path"]; then
-#    local nvmrc_node_version = $(nvm version "$(cat "${nvmrc_path}")")
-#
-#    if [ "$nvmrc_node_version" = "N/A" ]; then
-#      nvm install
-#    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-#      nvm use
-#    fi
-#  fi
-#}
-#add-zsh-hook chpwd load-nvmrc
-
-zplug "docker/compose", use:contrib/completion/zsh
+zplug "tomsquest/nvm-auto-use.zsh", from:github
 
 # check if all plugins installed, else prompt to install
 if ! zplug check --verbose; then
@@ -112,8 +91,11 @@ zplug load
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+bindkey -v                          # vi mode$
+
 
 # plugins used before, add if missed
 # zplug "modules/git", from:prezto
 # zplug "modules/gpg", from:prezto
 # zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+# zplug "docker/compose", use:contrib/completion/zsh

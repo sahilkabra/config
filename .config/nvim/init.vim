@@ -23,20 +23,22 @@ Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'     " file linting
 " {{{
 "   " use only tslint for typescript
-    let g:ale_linters = {
-    \  'typescript': ['tslint'],
-    \}
+    "let g:ale_linters = {
+    "\  'typescript': ['tslint'],
+    "\}
     " do not run on typing
     let g:ale_lint_on_text_changed = 'never'
     " do not run on enter
     let g:ale_lint_on_enter = 0
+    " do not run ale on save
+    let g:ale_lint_on_save = 1
     " show errors in location list
     let g:ale_open_list = 1
-    augroup filetype_jsx
-      autocmd!
-      au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-      au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
-    augroup END
+    " augroup filetype_jsx
+    "   autocmd!
+    "   au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+    "   au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+    " augroup END
 " }}}
 
 " formatter
@@ -81,19 +83,24 @@ Plug 'junegunn/fzf.vim'                                         " vim keybinding
     let g:fzf_nvim_statusline = 0 " disable status line overwriting
     let g:fzf_buffers_jump = 1 " use existing buffer if possible
     " Normal mode mappings
-    nmap fzo :FZF<cr>
-    nmap fz! :FZF!<cr>
-    nmap fzgc :Commits<cr>
-    nmap fzgb :BCommits<cr>
-    nmap fzgf :GFiles<cr>
-    nmap fzg? :GFiles?<cr>
-    nmap fzbf :Buffers<cr>
-    nmap fzt :Tags<cr>
+    nmap fo :FZF<cr>
+    nmap foo :FZF!<cr>
+    nmap gc :Commits<cr>
+    nmap gb :BCommits<cr>
+    nmap gf :GFiles<cr>
+    nmap gff :GFiles!<cr>
+    nmap bf :Buffers<cr>
+    nmap bff :Buffers<cr>
+    nmap tg :Tags<cr>
     imap <c-x><c-l> <plug>(fzf-complete-line)
 " }}}
 
 " YCM type omni complete plugin
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+" {{{
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#complete_method = 'complete'
+" }}}
 
 " javascript plugins
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -105,20 +112,19 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'} " syntax fo
 " }}}
 
 " Type script plugins
-Plug 'leafgarland/typescript-vim',  " syntax highlight for ts
+Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
+" Plug 'leafgarland/typescript-vim',  " syntax highlight for ts
 " {{{
-    let g:typescript_indent_disable = 1
+"     let g:typescript_indent_disable = 1
 " }}}
-Plug 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-Plug 'Quramy/tsuquyomi', {'for': 'typescript'} " use tsserver for omnicomplete and other ts features
+
+ Plug 'mhartington/nvim-typescript', {'for': 'typescript'}
+" {{{
+" let g:deoplete#enable_at_startup = 1
+"  let g:deoplete#enable_debug = 1
+"  let g:deoplete#enable_profile = 1
+"  call deoplete#enable_logging('DEBUG', '/PATH_TO/deoplete.log')
+" }}}
 
 " python plugins
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}         " PEP8 compatible indent for python
@@ -128,10 +134,10 @@ Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organis
 Plug 'elzr/vim-json', {'for': 'json'}
 
 " postcss syntax
-Plug 'stephenway/postcss.vim'
+Plug 'stephenway/postcss.vim', {'for': 'css'}
 
 " elm
-Plug 'elmcast/elm-vim'
+Plug 'elmcast/elm-vim', {'for': 'elm'}
 
 " --utility plugins
 Plug 'scrooloose/nerdtree',
@@ -169,7 +175,6 @@ Plug 'https://github.com/mileszs/ack.vim'                       " for silversear
 
 " commented out, previously used, enable if missed
 " Plug 'davidhalter/jedi-vim', {'for': 'python'}                  " Python Completion in VIM
-" Plug 'mhartington/nvim-typescript', {'for': 'typescript'}
 " Plug 'vim-syntastic/syntastic'                                   " file linting
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'jsbeautify'
@@ -196,6 +201,14 @@ Plug 'https://github.com/mileszs/ack.vim'                       " for silversear
 "    autocmd! BufWritePost * Neomake
 "    let g:neomake_open_list = 2
 " }}}
+
+" replace by nvim/typescript
+"Plug 'Shougo/vimproc.vim', {
+"\ 'build' : {
+"\     'linux' : 'make'
+"\    },
+"\ }
+"Plug 'Quramy/tsuquyomi', {'for': 'typescript'} " use tsserver for omnicomplete and other ts features
 
 call plug#end()            " required
 
