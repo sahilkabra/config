@@ -2,3 +2,4 @@ tags*
 .nvmrc
 *.bak
 *.org
+.temp

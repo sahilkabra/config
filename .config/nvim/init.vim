@@ -51,25 +51,28 @@ Plug 'sbdchd/neoformat'
     "let g:neoformat_verbose = 1
     let g:neoformat_typescript_prettier = {
       \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--write', '--single-quote', '--parser typescript', '--print-width 80', '--trailing-comma all', '--tab-width 4'],
+      \ 'args': ['--write', '--parser typescript'],
       \ 'stdin': 1,
       \ }
     let g:neoformat_enabled_typescript = ['prettier']
+
     let g:neoformat_javascript_prettier = {
       \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--single-quote', '--print-width 80', '--trailing-comma es5', '--tab-width 4'],
+      \ 'args': ['--single-quote', '--write'],
       \ 'stdin': 1,
       \ }
     let g:neoformat_enabled_javascript = ['prettier']
+
     let g:neoformat_json_prettier = {
       \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--write', '--print-width 80', '--tab-width 4'],
+      \ 'args': ['--write', '--parser json'],
       \ 'stdin': 1,
       \ }
     let g:neoformat_enabled_json = ['prettier']
+
     let g:neoformat_scss_prettier = {
       \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--write', '--single-quote', '--print-width 80', '--trailing-comma all'],
+      \ 'args': ['--write'],
       \ 'stdin': 1,
       \ }
     let g:neoformat_enabled_scss = ['prettier']
