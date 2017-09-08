@@ -11,7 +11,7 @@ map , <leader>
 map <Space> :
 
 " Use system clipboard by default
-"set clipboard+=unnamedplus
+set clipboard+=unnamedplus
 
 " Include plug
 set runtimepath+=~/.config/nvim
@@ -19,68 +19,38 @@ set runtimepath+=~/.config/nvim
 call plug#begin('~/.config/nvim/plugged')
 " Keep Plugin commands between vundle#begin/end.
 "
+" Git integration
 Plug 'tpope/vim-fugitive'
-Plug 'w0rp/ale'     " file linting
+" Toggle commment
+Plug 'tomtom/tcomment_vim'
+Plug 'w0rp/ale'     " file linting and formatting
 " {{{
-"   " use only tslint for typescript
-    "let g:ale_linters = {
-    "\  'typescript': ['tslint'],
-    "\}
     " do not run on typing
     let g:ale_lint_on_text_changed = 'never'
     " do not run on enter
     let g:ale_lint_on_enter = 0
-    " do not run ale on save
+    " run ale on save
     let g:ale_lint_on_save = 1
-    " show errors in location list
+    " keep error list open
     let g:ale_open_list = 1
-    " augroup filetype_jsx
-    "   autocmd!
-    "   au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-    "   au BufNewFile,BufRead *.tsx set filetype=typescript.tsx
-    " augroup END
+    " use location list
+    let g:ale_set_loclist = 1
+    " fixers
+    let g:ale_javascript_prettier_use_local_config = 1
+    let g:ale_fix_on_save = 1
+    let g:ale_fixers = {}
+    let g:ale_fixers['javascript'] = [
+                \ 'prettier', 'eslint'
+                \]
+    let g:ale_javascript_prettier_options = '--single-quote'
+    let g:ale_fixers['typescript'] = [
+                \ 'prettier'
+                \]
+    let g:ale_fixers['json'] = []
 " }}}
-
-" formatter
-Plug 'sbdchd/neoformat'
-" {{{
-    augroup fmt
-     autocmd!
-     autocmd BufWritePre * Neoformat
-    augroup END
-    "let g:neoformat_verbose = 1
-    let g:neoformat_typescript_prettier = {
-      \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--write', '--parser typescript'],
-      \ 'stdin': 1,
-      \ }
-    let g:neoformat_enabled_typescript = ['prettier']
-
-    let g:neoformat_javascript_prettier = {
-      \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--single-quote', '--write'],
-      \ 'stdin': 1,
-      \ }
-    let g:neoformat_enabled_javascript = ['prettier']
-
-    let g:neoformat_json_prettier = {
-      \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--write', '--parser json'],
-      \ 'stdin': 1,
-      \ }
-    let g:neoformat_enabled_json = ['prettier']
-
-    let g:neoformat_scss_prettier = {
-      \ 'exe': './node_modules/.bin/prettier',
-      \ 'args': ['--write'],
-      \ 'stdin': 1,
-      \ }
-    let g:neoformat_enabled_scss = ['prettier']
-" }}}
-
 Plug 'will133/vim-dirdiff'
 Plug 'https://github.com/ludovicchabant/vim-gutentags'          " background tag generation
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install -all'}  " fuzzy finder for vim
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}  " fuzzy finder for vim
 Plug 'junegunn/fzf.vim'                                         " vim keybindings for fzf
 " {{{
     let g:fzf_nvim_statusline = 0 " disable status line overwriting
@@ -97,14 +67,12 @@ Plug 'junegunn/fzf.vim'                                         " vim keybinding
     nmap tg :Tags<cr>
     imap <c-x><c-l> <plug>(fzf-complete-line)
 " }}}
-
 " YCM type omni complete plugin
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 " {{{
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#complete_method = 'complete'
 " }}}
-
 " javascript plugins
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
@@ -113,35 +81,24 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'} " syntax fo
     " js-lib-syntax config
     let g:used_javascript_libs = 'underscore,backbone,jquery,chai,flux'
 " }}}
-
 " Type script plugins
-Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
-" Plug 'leafgarland/typescript-vim',  " syntax highlight for ts
-" {{{
-"     let g:typescript_indent_disable = 1
-" }}}
-
- Plug 'mhartington/nvim-typescript', {'for': 'typescript'}
+Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}          " syntax highlight
+Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'typescript'}    " ide features
 " {{{
 " let g:deoplete#enable_at_startup = 1
 "  let g:deoplete#enable_debug = 1
 "  let g:deoplete#enable_profile = 1
 "  call deoplete#enable_logging('DEBUG', '/PATH_TO/deoplete.log')
 " }}}
-
 " python plugins
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}         " PEP8 compatible indent for python
 Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
-
 " JSON
 Plug 'elzr/vim-json', {'for': 'json'}
-
 " postcss syntax
 Plug 'stephenway/postcss.vim', {'for': 'css'}
-
 " elm
 Plug 'elmcast/elm-vim', {'for': 'elm'}
-
 " --utility plugins
 Plug 'scrooloose/nerdtree',
 " {{{
@@ -153,7 +110,7 @@ Plug 'tmhedberg/SimpylFold'                                     " vim folding
 Plug 'tpope/vim-surround'
 " {{{
     " no surround mappings
-    let g:surround_no_mappings = 1
+    " let g:surround_no_mappings = 1
 " }}}
 Plug 'easymotion/vim-easymotion'
 " {{{
@@ -164,10 +121,15 @@ Plug 'easymotion/vim-easymotion'
 " }}}
 " tmux-vim seamless navigation
 Plug 'christoomey/vim-tmux-navigator'
-
 " colors
-Plug 'NLKNguyen/papercolor-theme'
-
+" Plug 'NLKNguyen/papercolor-theme'
+" {{{
+     " colorscheme PaperColor
+" }}}
+Plug 'reedes/vim-colors-pencil'
+" {{{
+     " colorscheme pencil
+" }}}
 " quick searching; fzf doesn't fulfill everything
 Plug 'https://github.com/mileszs/ack.vim'                       " for silversearcher
 " {{{
@@ -179,6 +141,9 @@ Plug 'https://github.com/mileszs/ack.vim'                       " for silversear
 " commented out, previously used, enable if missed
 " Plug 'davidhalter/jedi-vim', {'for': 'python'}                  " Python Completion in VIM
 " Plug 'vim-syntastic/syntastic'                                   " file linting
+" {{{
+"    let g:syntastic_python_checkers = ["python", "flake8"]
+" }}}
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'jsbeautify'
 " Plug 'SuperTab' " use tab completion
@@ -190,7 +155,11 @@ Plug 'https://github.com/mileszs/ack.vim'                       " for silversear
 " Plug 'mxw/vim-jsx', {'for': 'javascript'}
 " Plug 'https://github.com/ternjs/tern_for_vim', {'do': 'npm install'} " def, type, rename js variable etc
 " Plug 'jlesquembre/peaksea'
-"
+
+" Plug 'leafgarland/typescript-vim',  " syntax highlight for ts
+" {{{
+"     let g:typescript_indent_disable = 1
+" }}}
 
 " Replace by ale
 " Plug 'neomake/neomake'                                          " file linting
@@ -212,6 +181,45 @@ Plug 'https://github.com/mileszs/ack.vim'                       " for silversear
 "\    },
 "\ }
 "Plug 'Quramy/tsuquyomi', {'for': 'typescript'} " use tsserver for omnicomplete and other ts features
+
+" Ale can do the job
+" formatter
+"Plug 'sbdchd/neoformat'
+" {{{
+"    augroup fmt
+"     autocmd!
+"     autocmd BufWritePre * Neoformat
+"    augroup END
+    "let g:neoformat_verbose = 1
+"    let g:neoformat_typescript_prettier = {
+"      \ 'exe': './node_modules/.bin/prettier',
+"      \ 'args': ['--write', '--parser typescript'],
+"      \ 'stdin': 1,
+"      \ }
+"    let g:neoformat_enabled_typescript = ['prettier']
+"
+"    let g:neoformat_javascript_prettier = {
+"      \ 'exe': './node_modules/.bin/prettier',
+"      \ 'args': ['--single-quote', '--write'],
+"      \ 'stdin': 1,
+"      \ }
+"    let g:neoformat_enabled_javascript = ['prettier']
+"
+"    let g:neoformat_json_prettier = {
+"      \ 'exe': './node_modules/.bin/prettier',
+"      \ 'args': ['--write', '--parser json'],
+"      \ 'stdin': 1,
+"      \ }
+"    let g:neoformat_enabled_json = ['prettier']
+"
+"    let g:neoformat_scss_prettier = {
+"      \ 'exe': './node_modules/.bin/prettier',
+"      \ 'args': ['--write'],
+"      \ 'stdin': 1,
+"      \ }
+"    let g:neoformat_enabled_scss = ['prettier']
+" }}}
+
 
 call plug#end()            " required
 
@@ -258,7 +266,6 @@ highlight ColorColumn ctermbg=6
 "Delete all spaces at the end of line
 autocmd! bufwritepre * :%s/\s\+$//e
 
-" let g:syntastic_python_checkers = ["python", "flake8"]
 
 " Fast Saving
 nmap fs :w!<cr>
@@ -297,9 +304,12 @@ nnoremap ncr J
 " split and surround with parenthesis
 nnoremap csp <Plug>VSurround
 
+" enable matching for if/else/html/xml etc
+runtime plugin/matchit.vim
+
 set cc=120
 
-colorscheme PaperColor
+ colorscheme pencil
 
 set statusline= "clear status line
 "set statusline=[%n]\ %10F%m\ %y\ [%{&ff}]\ \ %=\ %l/%L\ [%c]\ %p%%
