@@ -35,17 +35,17 @@ compton -b
 #
 # STARTUP ICON TRAY
 #
-trayer \
-  --edge top \
-  --align right \
-  --SetDockType true \
-  --SetPartialStrut true \
-  --expand true \
-  --width 5 \
-  --transparent true \
-  --tint 0x111111 \
-  --height 17 \
-  &
+# trayer \
+#   --edge top \
+#   --align right \
+#   --SetDockType true \
+#   --SetPartialStrut true \
+#   --expand true \
+#   --width 5 \
+#   --transparent true \
+#   --tint 0x111111 \
+#   --height 17 \
+#   &
 
 xsetroot -solid '#333333'
 

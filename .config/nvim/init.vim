@@ -11,7 +11,7 @@ map , <leader>
 map <Space> :
 
 " Use system clipboard by default
-set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
 
 " Include plug
 set runtimepath+=~/.config/nvim
@@ -27,6 +27,9 @@ Plug 'w0rp/ale'     " file linting and formatting
 " {{{
     " do not run on typing
     let g:ale_lint_on_text_changed = 'never'
+    " error and warn signs
+    let g:ale_sign_error = 'E'
+    let g:ale_sign_warning = 'W'
     " do not run on enter
     let g:ale_lint_on_enter = 0
     " run ale on save
@@ -47,6 +50,7 @@ Plug 'w0rp/ale'     " file linting and formatting
                 \ 'prettier'
                 \]
     let g:ale_fixers['json'] = []
+    let g:ale_fixers['python'] = ['autopep8', 'isort']
 " }}}
 Plug 'will133/vim-dirdiff'
 Plug 'https://github.com/ludovicchabant/vim-gutentags'          " background tag generation
