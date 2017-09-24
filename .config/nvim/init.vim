@@ -21,6 +21,10 @@ call plug#begin('~/.config/nvim/plugged')
 "
 " Git integration
 Plug 'tpope/vim-fugitive'
+" {{{
+    nnoremap gd :Gdiff<cr>
+    nnoremap ga :Gblame<cr>
+" }}}
 " Toggle commment
 Plug 'tomtom/tcomment_vim'
 Plug 'w0rp/ale'     " file linting and formatting
@@ -125,15 +129,7 @@ Plug 'easymotion/vim-easymotion'
 " }}}
 " tmux-vim seamless navigation
 Plug 'christoomey/vim-tmux-navigator'
-" colors
-" Plug 'NLKNguyen/papercolor-theme'
-" {{{
-     " colorscheme PaperColor
-" }}}
-Plug 'reedes/vim-colors-pencil'
-" {{{
-     " colorscheme pencil
-" }}}
+Plug 'flazz/vim-colorschemes'
 " quick searching; fzf doesn't fulfill everything
 Plug 'https://github.com/mileszs/ack.vim'                       " for silversearcher
 " {{{
@@ -308,12 +304,23 @@ nnoremap ncr J
 " split and surround with parenthesis
 nnoremap csp <Plug>VSurround
 
+" easier to type
+noremap H ^
+noremap L $
+
 " enable matching for if/else/html/xml etc
 runtime plugin/matchit.vim
 
 set cc=120
 
- colorscheme pencil
+colorscheme PaperColor
+
+" netrw as nerdtree
+let g:netrw_altv = 1
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
 
 set statusline= "clear status line
 "set statusline=[%n]\ %10F%m\ %y\ [%{&ff}]\ \ %=\ %l/%L\ [%c]\ %p%%
