@@ -9,6 +9,8 @@ set background=light
 let mapleader=','
 map , <leader>
 map <Space> :
+map <leader>r :source $MYVIMRC<cr>
+map <leader>e :e $MYVIMRC<cr>
 
 " Use system clipboard by default
 " set clipboard+=unnamedplus
@@ -64,15 +66,17 @@ Plug 'junegunn/fzf.vim'                                         " vim keybinding
     let g:fzf_nvim_statusline = 0 " disable status line overwriting
     let g:fzf_buffers_jump = 1 " use existing buffer if possible
     " Normal mode mappings
-    nmap fo :FZF<cr>
-    nmap foo :FZF!<cr>
-    nmap gc :Commits<cr>
-    nmap gb :BCommits<cr>
-    nmap gf :GFiles<cr>
-    nmap gff :GFiles!<cr>
-    nmap bf :Buffers<cr>
-    nmap bff :Buffers<cr>
-    nmap tg :Tags<cr>
+    nmap <leader>ls :FZF<cr>
+    nmap <leader>lc :Commits<cr>
+    nmap <leader>lc! :Commits!<cr>
+    nmap <leader>lbc :BCommits<cr>
+    nmap <leader>lbc! :BCommits!<cr>
+    nmap <leader>lg :GFiles<cr>
+    nmap <leader>lg! :GFiles!<cr>
+    nmap <leader>lbf :Buffers<cr>
+    nmap <leader>lbf! :Buffers!<cr>
+    nmap <leader>ltg :Tags<cr>
+    nmap <leader>ltg! :Tags!<cr>
     imap <c-x><c-l> <plug>(fzf-complete-line)
 " }}}
 " YCM type omni complete plugin
@@ -298,15 +302,15 @@ nmap <leader><Up> :resize +5<cr>
 nmap <leader><Down> :resize -5<cr>
 
 " Split line at cursor
-nnoremap cr i<CR><Esc>
-nnoremap ncr J
-
-" split and surround with parenthesis
-nnoremap csp <Plug>VSurround
+nnoremap <leader>cr i<CR><Esc>
+nnoremap <leader>ncr J
 
 " easier to type
 noremap H ^
 noremap L $
+
+" toggle search highlighting
+nmap <leader>hls :set hlsearch!<CR>
 
 " enable matching for if/else/html/xml etc
 runtime plugin/matchit.vim

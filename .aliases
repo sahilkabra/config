@@ -1,5 +1,6 @@
 # ls helpers
-alias lg='LANG=C ls --group-directories-first -F --color'
+alias ls='LANG=C ls --color'
+alias lg='ls --group-directories-first -F'
 alias lgd='LANG=C lg -al'
 alias ll='lg -l'
 alias la='lg -a'
@@ -17,3 +18,11 @@ alias tmux='tmux -2'
 
 # config files alias
 alias config='/usr/bin/git --git-dir=$HOME/src/config --work-tree=$HOME'
+
+alias ws='cd ~/src'
+
+function note() {
+    touch ~/.notes
+    dt=`date '+%Y-%m-%d'`
+    echo "# $dt $1" >> ~/.notes
+}
