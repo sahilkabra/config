@@ -57,6 +57,8 @@ Plug 'w0rp/ale'     " file linting and formatting
                 \]
     let g:ale_fixers['json'] = []
     let g:ale_fixers['python'] = ['autopep8', 'isort']
+    " custom tslint fixer till ale supports it
+    nmap <leader>fx :!node_modules/.bin/tslint --fix %<cr>
 " }}}
 Plug 'will133/vim-dirdiff'
 Plug 'https://github.com/ludovicchabant/vim-gutentags'          " background tag generation
