@@ -22,7 +22,12 @@ alias config='/usr/bin/git --git-dir=$HOME/src/config --work-tree=$HOME'
 alias ws='cd ~/src'
 
 function note() {
-    touch ~/.notes
-    dt=`date '+%Y-%m-%d'`
-    echo "# $dt $1" >> ~/.notes
+    [[ -e ~/.notes ]] && touch ~/.notes
+    if [[ -z "$1" ]]; then
+        cat ~/.notes
+    else
+        dt=`date '+%Y-%m-%d'`
+        echo "# $dt $1" >> ~/.notes
+    fi
 }
+

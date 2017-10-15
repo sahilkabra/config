@@ -20,10 +20,11 @@ import XMonad.Actions.Submap
 import XMonad.Actions.WindowBringer
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Layout.Accordion
-import XMonad.Layout.Spiral
-import XMonad.Layout.Tabbed
+import XMonad.Layout.Dishes
+import XMonad.Layout.DragPane
 import XMonad.Layout.IndependentScreens
+import XMonad.Layout.Tabbed
+import XMonad.StackSet (screen, tag, current)
 import XMonad.Util.Run (spawnPipe)
 
 ------------------------------------------------------------------------
@@ -112,7 +113,6 @@ myFocusedBorderColor = "#cd8b00"
 -- Key bindings. Add, modify or remove key bindings here.
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
-
     [
      -- Rotate through the available layout algorithms
       ((modm,               xK_space ), sendMessage NextLayout)
@@ -136,6 +136,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_Tab     ), windows W.focusDown)
     , ((modm .|. shiftMask, xK_Tab     ), windows W.focusUp)
 
+    -- Push window back into tiling
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
@@ -203,6 +204,28 @@ launchPycharm = ((0, xK_p), spawn "wmname LG3D && pycharm")
 launchVsCode = ((0, xK_v), spawn "code-insiders")
 launchWorkChrome = ((0, xK_w), spawn "google-chrome --profile-directory='Profile 1'")
 screenshot = ((0, xK_Print), spawn "shutter")
+
+------------------------------------------------------------------------
+-- window, come here!
+
+isOnScreen :: ScreenId -> WindowSpace -> Bool
+isOnScreen s ws = s == unmarshallS (tag ws)
+
+currentScreen :: X ScreenId
+currentScreen = gets (screen . current . windowset)
+
+spacesOnCurrentScreen :: WSType
+spacesOnCurrentScreen = WSIs (isOnScreen <$> currentScreen)
+
+wsSubmap = ((0, xK_w), submap . M.fromList $
+  [
+    switchNextWS
+  , switchPrevWS
+  ])
+
+switchNextWS = ((0, xK_n), moveTo Next spacesOnCurrentScreen)
+switchPrevWS = ((0, xK_p), moveTo Prev spacesOnCurrentScreen)
+
 ------------------------------------------------------------------------
 -- window, come here!
 myBringWindow = ((myModMask .|. shiftMask, xK_b), bringMenu)
@@ -233,6 +256,7 @@ commandSubmap = ((myModMask, xK_c), submap . M.fromList $
   , screenshot
   , swapNextWindow
   , swapPrevWindow
+  , wsSubmap
   ])
 cmdLaunchDmenu = ((0, xK_p), spawn "dmenu_run")
 cmdLaunchTerminal = ((0, xK_t), spawn myTerminal)
@@ -324,7 +348,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleTabbedBottom ||| Accordion ||| spiral (6/7)
+myLayout = avoidStruts $ tiled ||| Dishes 2 (1/6) ||| Mirror tiled ||| simpleTabbedBottom
+    ||| dragPane Vertical 0.2 0.7
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio

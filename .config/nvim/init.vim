@@ -31,6 +31,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tomtom/tcomment_vim'
 Plug 'w0rp/ale'     " file linting and formatting
 " {{{
+    " configure linters
+    let g:ale_linters = {
+                \   'python': ['flake8']
+                \}
     " do not run on typing
     let g:ale_lint_on_text_changed = 'never'
     " error and warn signs
@@ -44,6 +48,8 @@ Plug 'w0rp/ale'     " file linting and formatting
     let g:ale_open_list = 1
     " use location list
     let g:ale_set_loclist = 1
+    " use global tsserver
+    let g:ale_typescript_tsserver_use_global = 0
     " fixers
     let g:ale_javascript_prettier_use_local_config = 1
     let g:ale_fix_on_save = 1
@@ -139,8 +145,10 @@ Plug 'flazz/vim-colorschemes'
 " quick searching; fzf doesn't fulfill everything
 Plug 'https://github.com/mileszs/ack.vim'                       " for silversearcher
 " {{{
-   if executable('ag')
-     let g:ackprg = 'ag --vimgrep'
+   if executable('rg')
+     let g:ackprg = 'rg -i --vimgrep --no-heading'
+     set grepprg=rg\ --vimgrep\ --no-heading
+     set grepformat=%f:%l:%c:%m:%m,%f:%l:%m
    endif
 " }}}
 
@@ -310,6 +318,10 @@ nnoremap <leader>ncr J
 " easier to type
 noremap H ^
 noremap L $
+
+" Better movement
+nnoremap <tab> %
+vnoremap <tab> %
 
 " toggle search highlighting
 nmap <leader>hls :set hlsearch!<CR>

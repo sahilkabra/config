@@ -54,5 +54,9 @@ xsetroot -solid '#333333'
 # lock after 10 min no user activity
 xautolock -time 10 -locker slock &
 
+# multitouch gestures
+libinput-gestures &
+
 # Now, finally, start xmonad
-exec xmonad-session
+# exec xmonad-session
+exec /home/sahilkabra/.cabal/bin/xmonad
