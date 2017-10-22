@@ -59,4 +59,4 @@ libinput-gestures &
 
 # Now, finally, start xmonad
 # exec xmonad-session
-exec /home/sahilkabra/.cabal/bin/xmonad
+exec $HOME/.cabal/bin/xmonad

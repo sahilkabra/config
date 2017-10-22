@@ -76,15 +76,15 @@ Plug 'junegunn/fzf.vim'                                         " vim keybinding
     " Normal mode mappings
     nmap <leader>ls :FZF<cr>
     nmap <leader>lc :Commits<cr>
-    nmap <leader>lc! :Commits!<cr>
+    nmap <leader>!lc :Commits!<cr>
     nmap <leader>lbc :BCommits<cr>
-    nmap <leader>lbc! :BCommits!<cr>
+    nmap <leader>!lbc :BCommits!<cr>
     nmap <leader>lg :GFiles<cr>
-    nmap <leader>lg! :GFiles!<cr>
+    nmap <leader>!lg :GFiles!<cr>
     nmap <leader>lbf :Buffers<cr>
-    nmap <leader>lbf! :Buffers!<cr>
+    nmap <leader>!lbf :Buffers!<cr>
     nmap <leader>ltg :Tags<cr>
-    nmap <leader>ltg! :Tags!<cr>
+    nmap <leader>!ltg :Tags!<cr>
     imap <c-x><c-l> <plug>(fzf-complete-line)
 " }}}
 " YCM type omni complete plugin
@@ -115,6 +115,9 @@ Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}         " PEP8 compatibl
 Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
 " JSON
 Plug 'elzr/vim-json', {'for': 'json'}
+" {{{
+    let g:vim_json_syntax_conceal = 0
+" }}}
 " postcss syntax
 Plug 'stephenway/postcss.vim', {'for': 'css'}
 " elm
@@ -392,7 +395,14 @@ set statusline+=%<\ <<\ %f "relative filename
 
 set laststatus=2
 
-"recalculate the tab warning flag when idle and after writing
+" set cursor shape based on mode
+" let &t_SI = "\<Esc>[6 q"
+" let &t_SR = "\<Esc>[4 q"
+" let &t_EI = "\<Esc>[2 q"
+" let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+" let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+" let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
 autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
 
 "return '[&et]' if &et is set wrong

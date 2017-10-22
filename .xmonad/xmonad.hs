@@ -18,8 +18,11 @@ import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Actions.Submap
 import XMonad.Actions.WindowBringer
+import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.BinarySpacePartition (emptyBSP)
 import XMonad.Layout.Dishes
 import XMonad.Layout.DragPane
 import XMonad.Layout.IndependentScreens
@@ -348,7 +351,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts $ tiled ||| Dishes 2 (1/6) ||| Mirror tiled ||| simpleTabbedBottom
+myLayout = avoidStruts $ tiled ||| emptyBSP ||| Dishes 2 (1/6) ||| Mirror tiled ||| simpleTabbedBottom
     ||| dragPane Vertical 0.2 0.7
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -381,8 +384,11 @@ myLayout = avoidStruts $ tiled ||| Dishes 2 (1/6) ||| Mirror tiled ||| simpleTab
 myManageHook = manageDocks <+> composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "XCalc"          --> doFloat
+    , isDialog                      --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , resource  =? "kdesktop"       --> doIgnore
+    ]
 
 ------------------------------------------------------------------------
 -- Event handling

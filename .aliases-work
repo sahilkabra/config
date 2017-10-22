@@ -1,3 +1,26 @@
 # Helpful aliases
 alias wchrome='google-chrome --profile-directory="Profile 1"'
 alias pcrome='google-chrome --profile-directory="Default"'
+alias rmorig='find . -type f -name '*.orig' -exec rm {} \;'
+
+# Xplan Aliases
+alias xplan-src='cd $XPLAN_BASE/version/99.99.999'
+alias xplan-log='xplan-log() { cd sites/$1/log };xplan-log'
+alias xplan-tail-log='xplan-tail-log() { tail -F sites/$1/log/server.log };xplan-tail-log'
+
+# Apex
+alias apex='cd ~/src/xplanbase/apps/apex/99.99.999'
+alias apex-start='DONT_CLEAR_CONSOLE=true DEVSERVER_QUIET=false PORT=65010 BROWSER=none npm run start'
+
+# Sql Server start
+function sqlserver-start() {
+    # docker run -e 'ACCEPT_EULA=Y' \
+    #     -e 'MSSQL_SA_PASSWORD=passw0rded' \
+    #     -e 'MSSQL_PID=Developer' \
+    #     --name sqlserver \
+    #     -p 1433:1433 \
+    #     -v /home/sahilkabra/.sqlserver/data:/var/opt/mssql \
+    #     -d microsoft/mssql-server-linux:2017-latest
+    docker start sqlserver
+}
+alias sqlserver-stop='docker stop sqlserver'

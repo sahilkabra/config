@@ -1,1 +1,2 @@
 Xcursor.size: 32
+#include ".config/xresources.d/urxvt-unicode"

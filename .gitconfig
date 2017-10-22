@@ -56,6 +56,7 @@
     last = log -1
     mini = !"git logp -10"
     comnv = commit --no-verify
+    brp = !"git br | grep $1 | xargs git br -d"
 [push]
     default = simple
 [gitreview]

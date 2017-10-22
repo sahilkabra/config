@@ -1,0 +1,29 @@
+! do not scroll with output
+URxvt*scrollWithBuffer: false
+URxvt.scrollBar: false
+URxvt.font: xft:Hack:size=11
+URxvt.letterSpace: -1
+URxvt.pointerBlank: true
+URxvt.perl-ext-common: resize-font
+
+! Piatto Light
+! URxvt.cursorColor: #414141
+! URxvt.pointerColor: #414141
+URxvt.background: #ffffff
+URxvt.foreground: #414141
+URxvt.color0:  #414141
+URxvt.color1: #b23771
+URxvt.color2: #66781e
+URxvt.color3: #cd6f34
+URxvt.color4: #3c5ea8
+URxvt.color5: #a454b2
+URxvt.color6: #66781e
+URxvt.color7: #ffffff
+URxvt.color8: #3f3f3f
+URxvt.color9: #db3365
+URxvt.color10: #829429
+URxvt.color11: #cd6f34
+URxvt.color12: #3c5ea8
+URxvt.color13: #a454b2
+URxvt.color14: #829429
+URxvt.color15: #f2f2f2
