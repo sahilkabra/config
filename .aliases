@@ -22,7 +22,7 @@ alias config='/usr/bin/git --git-dir=$HOME/src/config --work-tree=$HOME'
 alias ws='cd ~/src'
 
 function note() {
-    [[ -e ~/.notes ]] && touch ~/.notes
+    [ ! -f ~/.notes ] && touch ~/.notes
     if [[ -z "$1" ]]; then
         cat ~/.notes
     else
