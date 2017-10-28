@@ -86,14 +86,13 @@ fi
 # Load zsh plugins
 zplug load
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.cargo/env ] && source ~/.cargo/env
+bindkey -v                          # vi mode$
+
+[ -f ${HOME}/.fzf.zsh ] && source ${HOME}/.fzf.zsh
+[ -f ${HOME}/.cargo/env ] && source ~/.cargo/env
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-bindkey -v                          # vi mode$
-
 
 # plugins used before, add if missed
 # zplug "modules/git", from:prezto

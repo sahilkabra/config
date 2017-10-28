@@ -138,9 +138,9 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 " {{{
     " easy motion mappings
-    nmap es <Plug>(easymotion-sn)
-    nmap en <Plug>(easymotion-next)
-    nmap ep <Plug>(easymotion-prev)
+    nmap <leader>es <Plug>(easymotion-sn)
+    nmap <leader>en <Plug>(easymotion-next)
+    nmap <leader>ep <Plug>(easymotion-prev)
 " }}}
 " tmux-vim seamless navigation
 Plug 'christoomey/vim-tmux-navigator'
@@ -153,6 +153,10 @@ Plug 'https://github.com/mileszs/ack.vim'                       " for silversear
      set grepprg=rg\ --vimgrep\ --no-heading
      set grepformat=%f:%l:%c:%m:%m,%f:%l:%m
    endif
+" }}}
+" align code
+Plug 'godlygeek/tabular'
+" {{{
 " }}}
 
 " commented out, previously used, enable if missed
