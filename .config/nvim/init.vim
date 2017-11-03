@@ -138,9 +138,9 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 " {{{
     " easy motion mappings
-    nmap <leader>es <Plug>(easymotion-sn)
-    nmap <leader>en <Plug>(easymotion-next)
-    nmap <leader>ep <Plug>(easymotion-prev)
+    nmap <leader>/ <Plug>(easymotion-sn)
+    nmap <leader>n <Plug>(easymotion-next)
+    nmap <leader>p <Plug>(easymotion-prev)
 " }}}
 " tmux-vim seamless navigation
 Plug 'christoomey/vim-tmux-navigator'
