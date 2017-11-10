@@ -86,7 +86,7 @@ rAltKey = mod5Mask
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask       = lAltKey
+myModMask       = winKey
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -211,19 +211,16 @@ appSubmap = ((0, xK_a), submap . M.fromList $
   , launchPycharm
   , launchIntellij
   , launchVsCode
-  , launchWorkChrome
   , screenshot
   ])
 launchFirefox = ((0, xK_f), spawn "firefox")
-launchPersonalChrome = ((0, xK_c), spawn "google-chrome --profile-directory='Default'")
-launchPycharm = ((0, xK_p), spawn "wmname LG3D && ${HOME}/.bin/pycharm")
 launchIntellij = ((0, xK_i), spawn "${HOME}/.bin/idea")
+launchPersonalChrome = ((0, xK_c), spawn "chromium")
+launchPycharm = ((0, xK_p), spawn "wmname LG3D && pycharm")
 launchVsCode = ((0, xK_v), spawn "code-insiders")
-launchWorkChrome = ((0, xK_w), spawn "google-chrome --profile-directory='Profile 1'")
 screenshot = ((0, xK_Print), spawn "shutter")
 
 ------------------------------------------------------------------------
--- window, come here!
 
 isOnScreen :: ScreenId -> WindowSpace -> Bool
 isOnScreen s ws = s == unmarshallS (tag ws)
