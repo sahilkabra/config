@@ -28,6 +28,17 @@
 [mergetool]
     prompt = false
 [alias]
+    # new workflow - in line with linux commands
+    #
+    # list branches
+    lsb = !"git br"
+    lsba = !"git br -a"
+
+    # list commits
+    lsc = !"git logp --no-merges"
+    lsca = !"git log --no-merges"
+    lscm = !"git mini --no-merges"
+
     # Better log views
     lg1 = !"git lg1-specific"
     lg2 = !"git lg2-specific"
