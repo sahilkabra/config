@@ -99,3 +99,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # zplug "modules/gpg", from:prezto
 # zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 # zplug "docker/compose", use:contrib/completion/zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
