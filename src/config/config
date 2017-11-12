@@ -2,21 +2,5 @@
 	repositoryformatversion = 0
 	filemode = true
 	bare = true
-	precomposeunicode = true
 [remote "origin"]
-	url = git@github.com:sahilkabra/config.git
-    fetch = +refs/heads/*:refs/remotes/origin/*
-[status]
-	showuntrackedfiles = no
-[branch "master"]
-	remote = origin
-	merge = refs/heads/master
-[branch "au02-skabra-nb2"]
-	remote = origin
-	merge = refs/heads/au02-skabra-nb2
-[branch "darkstar"]
-	remote = origin
-	merge = refs/heads/darkstar
-[branch "darkstar-arch"]
-	remote = origin
-	merge = refs/heads/darkstar-arch
+	url = https://github.com/sahilkabra/config.git
