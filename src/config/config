@@ -4,3 +4,5 @@
 	bare = true
 [remote "origin"]
 	url = https://github.com/sahilkabra/config.git
+[status]
+	showuntrackedfiles = no
