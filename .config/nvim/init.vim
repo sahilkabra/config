@@ -112,7 +112,7 @@ Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'types
 " }}}
 " python plugins
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}         " PEP8 compatible indent for python
-Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
+Plug 'davidhalter/jedi-vim', {'for': 'python'}                  " Python Completion in VIM
 " JSON
 Plug 'elzr/vim-json', {'for': 'json'}
 " {{{
@@ -160,7 +160,7 @@ Plug 'godlygeek/tabular'
 " }}}
 
 " commented out, previously used, enable if missed
-" Plug 'davidhalter/jedi-vim', {'for': 'python'}                  " Python Completion in VIM
+" Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
 " Plug 'vim-syntastic/syntastic'                                   " file linting
 " {{{
 "    let g:syntastic_python_checkers = ["python", "flake8"]
@@ -245,6 +245,8 @@ Plug 'godlygeek/tabular'
 call plug#end()            " required
 
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+source ~/.config/nvim/snippets.vim
 
 set encoding=utf-8
 set scrolloff=999

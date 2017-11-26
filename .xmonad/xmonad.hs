@@ -178,7 +178,6 @@ myAdditionalKeys =
     commandSubmap
   , myBringWindow
   , gotoWindow
-  , switchKbLayout
   , systemLock
   -- get out of here
   --, xf86controls
@@ -235,9 +234,6 @@ myBringWindow = ((myModMask .|. shiftMask, xK_b), bringMenu)
 
 -- go to window prompt
 gotoWindow = ((myModMask .|. shiftMask, xK_g), gotoMenu)
-
--- switch keyboard layout
-switchKbLayout = ((myModMask .|. shiftMask, xK_Insert), spawn "$HOME/.bin/switch-layout")
 ------------------------------------------------------------------------
 -- Launch command submap with mod+c
 
@@ -289,6 +285,7 @@ systemSubmap = ((0, xK_s), submap . M.fromList $
   [
     locker
   , suspend
+  , switchKbLayout
   , poweroff
   , sysrestart
   ])
@@ -297,6 +294,8 @@ locker = ((0, xK_l), spawn lockCommand)
 suspend = ((0, xK_s), spawn "systemctl suspend")
 poweroff = ((0, xK_h), spawn "poweroff")
 sysrestart = ((0, xK_r), spawn "reboot")
+-- switch keyboard layout
+switchKbLayout = ((0, xK_k), spawn "$HOME/.bin/switch-layout")
 
 -- not working to figure out why
 xf86controls XConfig {XMonad.modMask = modMask} = M.fromList $
