@@ -70,3 +70,5 @@
     username = sahil.kabra
 [credential]
     helper = cache --timeout 43200
+[core]
+	excludesfile = /home/sahil/.gitignore

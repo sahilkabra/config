@@ -5,7 +5,8 @@
 # check if no caps options is set; if not, set it
 kbOptions=$(setxkbmap -query | awk '/option/{print $2}')
 if [ -z "$kbOptions" ]; then
-  setxkbmap -option 'ctrl:nocaps,shift:both_capslock,lv3:ralt_switch,terminate:ctrl_alt_bkspc'
+  # setxkbmap -option 'ctrl:nocaps,shift:both_capslock,lv3:ralt_switch,terminate:ctrl_alt_bkspc'
+  setxkbmap -option 'shift:both_capslock,lv3:ralt_switch,terminate:ctrl_alt_bkspc'
 fi
 
 if [[ -n "$1" ]]; then

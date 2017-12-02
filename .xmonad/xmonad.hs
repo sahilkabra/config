@@ -36,7 +36,13 @@ import XMonad.Util.Run (spawnPipe)
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 -- main = xmonad defaults
-main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
+-- main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
+main = do
+    xmproc <- spawnPipe myBar
+    numScreens <- countScreens
+    xmonad $ docks (defaults numScreens) {
+        logHook = dynamicLogWithPP $ myPP xmproc
+    }
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -44,14 +50,14 @@ main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
 --
 -- No need to modify this.
 --
-defaults = def {
+defaults numScreens = def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
         clickJustFocuses   = myClickJustFocuses,
         borderWidth        = myBorderWidth,
         modMask            = myModMask,
-        workspaces         = myWorkspaces,
+        workspaces         = myWorkspaces numScreens,
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
 
@@ -63,7 +69,6 @@ defaults = def {
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = myLogHook,
         startupHook        = myStartupHook
     }
 
@@ -104,13 +109,18 @@ myBorderWidth   = 1
 -- workspace name. The number of workspaces is determined by the length
 -- of this list.
 --
-myWorkspaces =
-  withScreens 3 (["1:home","2:personal","3:code","4:app","5:work","6:vm","7:messengers"] ++ map show [8 .. 12])
+myWorkspaces numScreens =
+  withScreens numScreens (["1:home","2:personal","3:code","4:app","5:work","6:vm","7:messengers"] ++ map show [8 .. 12])
 
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#cd8b00"
+
+-- Current window title
+xmobarTitleColor = "#FFB6B0"
+-- Current WS color
+xmobarCurrentWorkspaceColor = "#CEFFAC"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -134,6 +144,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+
+    -- Toggle Struts
+    , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Focus Windows with alt tab or alt-shift tab
     , ((modm              , xK_Tab     ), windows W.focusDown)
@@ -178,7 +191,6 @@ myAdditionalKeys =
     commandSubmap
   , myBringWindow
   , gotoWindow
-  , systemLock
   -- get out of here
   --, xf86controls
   , brightnessDown
@@ -280,7 +292,6 @@ killApp = ((0, xK_q), kill)
 -- Launch system submap with mod+s
 
 -- system maps; lock, suspend etc.
-systemLock = ((myModMask, xK_Menu), spawn lockCommand)
 systemSubmap = ((0, xK_s), submap . M.fromList $
   [
     locker
@@ -400,13 +411,6 @@ myManageHook = manageDocks <+> composeAll
 --
 myEventHook = mempty
 
-------------------------------------------------------------------------
--- Status bars and logging
-
--- Perform an arbitrary action on each internal state change or X event.
--- See the 'XMonad.Hooks.DynamicLog' extension for examples.
---
-myLogHook = return ()
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -421,11 +425,12 @@ myStartupHook = return ()
 myBar = "xmobar"
 
 -- determines what is being written to the bar
-myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
-
--- hide the bar using mod+b
-toggleStrutsKey XConfig {XMonad.modMask = myModMask} = (myModMask, xK_b)
-
+myPP xmproc = xmobarPP {
+          ppCurrent = xmobarColor xmobarCurrentWorkspaceColor "" . wrap "<" ">"
+        , ppOutput = hPutStrLn xmproc
+        , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+        , ppSep = "  "
+    }
 
 -- | Finally, a copy of the default bindings in simple textual tabular format.
 help :: String

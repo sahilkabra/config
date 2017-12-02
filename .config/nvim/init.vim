@@ -111,7 +111,6 @@ Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'types
 "  call deoplete#enable_logging('DEBUG', '/PATH_TO/deoplete.log')
 " }}}
 " python plugins
-Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}         " PEP8 compatible indent for python
 Plug 'davidhalter/jedi-vim', {'for': 'python'}                  " Python Completion in VIM
 " JSON
 Plug 'elzr/vim-json', {'for': 'json'}
@@ -160,6 +159,7 @@ Plug 'godlygeek/tabular'
 " }}}
 
 " commented out, previously used, enable if missed
+" Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}         " PEP8 compatible indent for python
 " Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
 " Plug 'vim-syntastic/syntastic'                                   " file linting
 " {{{

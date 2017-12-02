@@ -8,63 +8,62 @@
 Config {
   -- Set font and default foreground/background colors. Note that
   -- the height of xmobar is controlled by the font you use.
-  font = "xft:Ubuntu Mono-10:antialias=true",
-  bgColor = "black",
-  fgColor = "grey",
+  font = "xft:Ubuntu Mono-10:antialias=true"
+  , lowerOnStart = True
+  , bgColor = "black"
+  , fgColor = "grey"
 
   -- Position is top left, taking up 95% of screen.
-  position = TopW L 95,
+  , position = TopW L 95
 
   -- list of commands which gather information about your system for
   -- presentation in the bar.
-  commands = [
-    -- Gather and format CPU usage information.
-    -- If it's above 50%, we consider it high usage and make it red.
-    Run Cpu [
-      "-H","50",
-      "--high","red"
-    ] 10
+  , commands = [
+        -- Gather and format CPU usage information.
+        -- If it's above 50%, we consider it high usage and make it red.
+        Run Cpu [
+          "-H","50"
+          , "--high","red"
+        ] 10
 
-    -- Gather and format memory usage information
-    , Run Memory [
-      "-t","Mem: <usedratio>%"
-    ] 10
+        -- Gather and format memory usage information
+        , Run Memory [
+          "-t","Mem: <usedratio>%"
+        ] 10
 
-    -- Date formatting
-    , Run Date "%a %b %_d %H:%M" "date" 10
+        -- Date formatting
+        , Run Date "%a %b %_d %H:%M" "date" 10
 
-    -- Battery information. This is likely to require some customization
-    -- based upon your specific hardware. Or, for a desktop you may want
-    -- to just remove this section entirely.
-    , Run Battery [
-      "-t", "<acstatus>: <left>%",
-      "--",
-      "-O", "AC",
-      "-o", "Bat",
-      "-h", "green",
-      "-l", "red"
-    ] 10
+        -- Battery information. This is likely to require some customization
+        -- based upon your specific hardware. Or, for a desktop you may want
+        -- to just remove this section entirely.
+        , Run Battery [
+          "-t", "<acstatus>: <left>%"
+          , "--"
+          , "-O", "AC"
+          , "-o", "Bat"
+          , "-h", "green"
+          , "-l", "red"
+        ] 10
 
-    -- This line tells xmobar to read input from stdin. That's how we
-    -- get the information that xmonad is sending it for display.
-    , Run StdinReader
+        -- This line tells xmobar to read input from stdin. That's how we
+        -- get the information that xmonad is sending it for display.
+        , Run StdinReader
 
-    -- Get disk space
-    , Run DiskU [("/", "/: <freep>%"), ("nvme0n1p8", "| home: <freep>%")]
-          ["-L", "20", "H", "50", "-m", "1", "-p", "3"]
-          36000 --refresh once every hour
-
---    , Run Com "hostname" ["-f"] "hostname" 0
+        -- Get disk space
+        , Run DiskU [("/", "/: <freep>%"), ("nvme0n1p8", "| home: <freep>%")]
+              ["-L", "20", "H", "50", "-m", "1", "-p", "3"]
+              36000 --refresh once every hour
    ],
 
    -- Separator character used to wrape variables in the xmobar template
-   sepChar = "%",
+   , sepChar = "%"
 
    -- Alignment separater characer used in the xmobar template. Everything
    -- before this will be aligned left, everything after aligned right.
-   alignSep = "}{",
+   , alignSep = "}{"
 
    -- Overall template for the layout of the xmobar contents. Note that
    -- space is significant and can be used to add padding.
-   template = "%StdinReader% }{ %disku% | %battery% | %cpu% | %memory% | <fc=#e6744c>%date%</fc> "
+   , template = "%StdinReader% }{ %disku% | %battery% | %cpu% | %memory% | <fc=#e6744c>%date%</fc> "
 }
