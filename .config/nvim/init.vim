@@ -105,13 +105,12 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'} " syntax fo
 Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}          " syntax highlight
 Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'typescript'}    " ide features
 " {{{
-" let g:deoplete#enable_at_startup = 1
 "  let g:deoplete#enable_debug = 1
 "  let g:deoplete#enable_profile = 1
 "  call deoplete#enable_logging('DEBUG', '/PATH_TO/deoplete.log')
 " }}}
 " python plugins
-Plug 'davidhalter/jedi-vim', {'for': 'python'}                  " Python Completion in VIM
+Plug 'zchee/deoplete-jedi', {'for': 'python'}                  " Python Completion in VIM
 " JSON
 Plug 'elzr/vim-json', {'for': 'json'}
 " {{{
@@ -159,6 +158,7 @@ Plug 'godlygeek/tabular'
 " }}}
 
 " commented out, previously used, enable if missed
+" Plug 'davidhalter/jedi-vim', {'for': 'python'}                  " Python Completion in VIM
 " Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}         " PEP8 compatible indent for python
 " Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
 " Plug 'vim-syntastic/syntastic'                                   " file linting
@@ -291,7 +291,7 @@ autocmd! bufwritepre * :%s/\s\+$//e
 
 
 " Fast Saving
-nmap fs :w!<cr>
+nmap <leader>fs :w!<cr>
 
 " toggle folds
 noremap zt za

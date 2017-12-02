@@ -422,7 +422,7 @@ myEventHook = mempty
 -- By default, do nothing.
 myStartupHook = return ()
 
-myBar = "xmobar"
+myBar = "${HOME}/.cabal/bin/xmobar"
 
 -- determines what is being written to the bar
 myPP xmproc = xmobarPP {
