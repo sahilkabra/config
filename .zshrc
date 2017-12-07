@@ -73,7 +73,6 @@ zplug "modules/autosuggestions", from:prezto
 
 export NVM_LAZY_LOAD=true
 zplug "lukechilds/zsh-nvm"
-zplug "tomsquest/nvm-auto-use.zsh", from:github
 
 # check if all plugins installed, else prompt to install
 if ! zplug check --verbose; then
@@ -95,6 +94,7 @@ bindkey -v                          # vi mode$
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # plugins used before, add if missed
+# zplug "tomsquest/nvm-auto-use.zsh", from:github cannot use lazy load and auto use
 # zplug "modules/git", from:prezto
 # zplug "modules/gpg", from:prezto
 # zplug 'zplug/zplug', hook-build:'zplug --self-manage'
