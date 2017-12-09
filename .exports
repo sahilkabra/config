@@ -1,3 +1,4 @@
 export JAVA_HOME=/opt/java
-export PATH=${HOME}/.bin:${HOME}/.cabal/bin:$PATH
+export STACK_BIN=${HOME}/.local/bin
+export PATH=${HOME}/.bin:${STACK_BIN}:$PATH
 export SAL_USE_VCLPLUGIN=gen

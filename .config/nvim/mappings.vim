@@ -5,6 +5,7 @@ nnoremap <Space> :
 nnoremap <leader>r :source $MYVIMRC<cr>
 nnoremap <leader>e :e $MYVIMRC<cr>
 
+inoremap <C-c> <Esc>
 " toggle folds
 nnoremap zt za
 

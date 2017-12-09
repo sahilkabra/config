@@ -16,6 +16,7 @@ let g:ale_open_list = 1
 let g:ale_set_loclist = 1
 " use global tsserver
 let g:ale_typescript_tsserver_use_global = 0
+
 " fixers
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save = 1
@@ -29,5 +30,6 @@ let g:ale_fixers['typescript'] = [
             \]
 let g:ale_fixers['json'] = []
 let g:ale_fixers['python'] = ['autopep8', 'isort']
-" custom tslint fixer till ale supports it
-nnoremap <leader>fx :!node_modules/.bin/tslint --fix %<cr>
+
+" disable ale completion
+let g:ale_completion_enabled = 0

@@ -30,6 +30,7 @@ set title
 set showcmd
 set foldmethod=syntax
 set foldlevel=99
+set dictionary+=/usr/share/dict/words
 
 " Highlight 120 columns
 set textwidth=120
@@ -50,6 +51,7 @@ set laststatus=2
 autocmd! bufwritepre * :%s/\s\+$//e
 
 execute "source" g:vim_config . "statusline.vim"
+
 " enable matching for if/else/html/xml etc
 runtime plugin/matchit.vim
 

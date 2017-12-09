@@ -6,9 +6,6 @@ call plug#begin(s:plug_dir)
 "-------------------[ interface ]------------------------------------------------
 Plug 'will133/vim-dirdiff'
 
-" background tag generation
-Plug 'https://github.com/ludovicchabant/vim-gutentags'
-
 " fuzzy finder for vim
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 
@@ -18,6 +15,8 @@ Plug 'junegunn/fzf.vim'
 " vim folding
 Plug 'tmhedberg/SimpylFold'
 Plug 'flazz/vim-colorschemes'
+
+Plug 'jsfaint/gen_tags.vim'
 
 "-------------------[ tools ]------------------------------------------------
 Plug 'scrooloose/nerdtree',
@@ -33,6 +32,9 @@ Plug 'https://github.com/mileszs/ack.vim'
 " align code
 Plug 'godlygeek/tabular'
 
+" plugin repeat
+Plug 'tpope/vim-repeat'
+
 "-------------------[ commands ]------------------------------------------------
 " Toggle commment
 Plug 'tomtom/tcomment_vim'
@@ -47,11 +49,13 @@ Plug 'christoomey/vim-tmux-navigator'
 " Git integration
 Plug 'tpope/vim-fugitive'
 
-" file linting and formatting
-Plug 'w0rp/ale'
+" YCM type omni complete plugin
+" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 
-" language client for auto completion
-Plug 'autozimu/LanguageClient-neovim', { 'do' : ':UpdateRemotePlugins' }
+" Completion
+Plug 'roxma/nvim-completion-manager'
+
+Plug 'w0rp/ale'
 
 "-------------------( javascript )------------------------------------------------
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -64,27 +68,36 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 " syntax highlight
 Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
 
+" ide features
+Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'typescript'}
+
+" tsx syntax highlight
+Plug 'ianks/vim-tsx', {'for': 'typescript'}
+
 "-------------------( python )------------------------------------------------
+" Python Completion in VIM
+" Plug 'zchee/deoplete-jedi', {'for': 'python'}
 
 "-------------------( json )------------------------------------------------
+Plug 'elzr/vim-json', {'for': 'json'}
 
 "-------------------( css )------------------------------------------------
 " postcss syntax
 Plug 'stephenway/postcss.vim', {'for': 'css'}
 
 "-------------------[ elm ]------------------------------------------------
-Plug 'elmcast/elm-vim', {'for': 'elm'}
+" Plug 'elmcast/elm-vim', {'for': 'elm'}
 
 "-------------------[ testing ]------------------------------------------------
 
 "-------------------[ commented ]------------------------------------------------
-" YCM type omni complete plugin
-" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-" Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'typescript'}    " ide features
-" Plug 'zchee/deoplete-jedi', {'for': 'python'}                  " Python Completion in VIM
-" Plug 'elzr/vim-json', {'for': 'json'}
 " Plug 'tpope/vim-surround'
 " Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
+" language client for auto completion
+" Plug 'autozimu/LanguageClient-neovim', { 'do' : ':UpdateRemotePlugins' }
+" background tag generation
+" Plug 'https://github.com/ludovicchabant/vim-gutentags'
+
 
 call plug#end()            " required
 
