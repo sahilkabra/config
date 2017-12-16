@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+# xmonad startup script. Intended to be run from an xsession configuration
+# to run xmonad and some associated programs.
+#
+# Originally obtained from:
+# Author: David Brewer
+# Repository: https://github.com/davidbrewer/xmonad-ubuntu-conf
+
+#
+# GENERAL INITIALIZATION
+#
+
+# Load X resources (fixes some font issues)
+xrdb -merge .Xresources
+
+# Start compositing to support transparency.
+compton -b
+
+#
+# SCREEN CONFIGURATION
+#
+
+# Activate primary screen
+# xrandr --output eDP1--auto --primary
+
+# If we find that a screen is connected via VGA, activate it and position it
+# to the left of the primary screen.
+#xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of LVDS-1
+
+# If we find that a screen is connected via DVI, activate it and position it
+# to the left of the primary screen.
+#xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS-1
+
+#
+# STARTUP ICON TRAY
+#
+# trayer \
+#   --edge top \
+#   --align right \
+#   --SetDockType true \
+#   --SetPartialStrut true \
+#   --expand true \
+#   --width 5 \
+#   --transparent true \
+#   --tint 0x111111 \
+#   --height 17 \
+#   &
+
+xsetroot -solid '#333333'
+
+# start some default apps here
+
+# lock after 10 min no user activity
+xautolock -time 10 -locker slock &
+
+# multitouch gestures
+libinput-gestures &
+
+# Now, finally, start xmonad
+# exec xmonad-session
+# exec $HOME/.cabal/bin/xmonad
+exec $HOME/.local/bin/xmonad
