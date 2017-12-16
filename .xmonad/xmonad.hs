@@ -110,7 +110,7 @@ myBorderWidth   = 1
 -- of this list.
 --
 myWorkspaces numScreens =
-  withScreens numScreens (["1:home","2:personal","3:code","4:app","5:work","6:vm","7:messengers"] ++ map show [8 .. 12])
+  withScreens 3 (["1:home","2:personal","3:code","4:app","5:work","6:vm","7:messengers"] ++ map show [8 .. 12])
 
 -- Border colors for unfocused and focused windows, respectively.
 --

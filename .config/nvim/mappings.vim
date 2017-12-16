@@ -2,6 +2,7 @@
 nnoremap <leader>fs :w!<cr>
 
 nnoremap <Space> :
+vnoremap <Space> :
 nnoremap <leader>r :source $MYVIMRC<cr>
 nnoremap <leader>e :e $MYVIMRC<cr>
 
@@ -57,3 +58,5 @@ nnoremap <leader>ltg :Tags<cr>
 " nnoremap <leader>!ltg :Tags!<cr>
 " inoremap <c-x><c-l> <plug>(fzf-complete-line)
 
+" ale mapping
+nnoremap <leader>lnt :ALELint<cr>
