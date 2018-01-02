@@ -86,7 +86,7 @@ rAltKey = mod5Mask
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask       = winKey
+myModMask       = lAltKey
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
