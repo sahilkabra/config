@@ -1,12 +1,12 @@
 #!/bin/bash
 
-s_code=$(tmux ls | grep code | cut -c 1)
+s_code=$(tmux ls | grep cd | cut -c 1)
 s_wk=$(tmux ls | grep wk | cut -c 1)
-s_personal=$(tmux ls | grep personal | cut -c 1)
+s_personal=$(tmux ls | grep prs | cut -c 1)
 
 if [[ -z ${s_code} ]]
 then
-    tmux new-session -d -s code
+    tmux new-session -d -s cd
 fi
 if [[ -z ${s_wk} ]]
 then
@@ -14,6 +14,6 @@ then
 fi
 if [[ -z ${s_personal} ]]
 then
-    tmux new-session -d -s personal
+    tmux new-session -d -s prs
 fi
 

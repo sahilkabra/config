@@ -49,9 +49,6 @@ Plug 'christoomey/vim-tmux-navigator'
 " Git integration
 Plug 'tpope/vim-fugitive'
 
-" YCM type omni complete plugin
-" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-
 " Completion
 Plug 'roxma/nvim-completion-manager'
 
@@ -75,8 +72,6 @@ Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'types
 Plug 'ianks/vim-tsx', {'for': 'typescript'}
 
 "-------------------( python )------------------------------------------------
-" Python Completion in VIM
-" Plug 'zchee/deoplete-jedi', {'for': 'python'}
 
 "-------------------( json )------------------------------------------------
 Plug 'elzr/vim-json', {'for': 'json'}
@@ -97,6 +92,11 @@ Plug 'stephenway/postcss.vim', {'for': 'css'}
 " Plug 'autozimu/LanguageClient-neovim', { 'do' : ':UpdateRemotePlugins' }
 " background tag generation
 " Plug 'https://github.com/ludovicchabant/vim-gutentags'
+" YCM type omni complete plugin
+" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+" Python Completion in VIM
+" Plug 'zchee/deoplete-jedi', {'for': 'python'}
+
 
 
 call plug#end()            " required
