@@ -63,13 +63,13 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 
 "-------------------( typescript )------------------------------------------------
 " syntax highlight
-Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
+"Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
+" tsx syntax highlight
+Plug 'peitalin/vim-jsx-typescript'
 
 " ide features
 Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'typescript'}
-
-" tsx syntax highlight
-Plug 'ianks/vim-tsx', {'for': 'typescript'}
 
 "-------------------( python )------------------------------------------------
 
