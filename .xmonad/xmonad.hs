@@ -301,10 +301,11 @@ systemSubmap = ((0, xK_s), submap . M.fromList $
   , sysrestart
   ])
 lockCommand = "xset dpms force off; slock"
+suspendCommand = "$HOME/.bin/sleep.sh"
+
 locker = ((0, xK_l), spawn lockCommand)
-suspend = ((0, xK_s), spawn "systemctl suspend")
--- suspend = ((0, xK_s), spawn "sudo s2ram -f")
-poweroff = ((0, xK_h), spawn "sudo poweroff")
+suspend = ((0, xK_s), spawn suspendCommand)
+poweroff = ((0, xK_h), spawn "poweroff")
 sysrestart = ((0, xK_r), spawn "reboot")
 -- switch keyboard layout
 switchKbLayout = ((0, xK_k), spawn "$HOME/.bin/switch-layout")
@@ -318,8 +319,8 @@ xf86controls XConfig {XMonad.modMask = modMask} = M.fromList $
   , volumeDown
   , volumeMute
   ]
-brightnessDown = ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -10")
-brightnessUp = ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +10")
+brightnessDown = ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -5")
+brightnessUp = ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +5")
 volumeMute = ((0, xF86XK_AudioMute), spawn "amixer set Master mute")
 volumeDown = ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5- unmute")
 volumeUp = ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5+ unmute")
