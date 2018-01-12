@@ -3,6 +3,9 @@ colors
 
 zmodload -i zsh/complist
 
+# Set timeout
+KEYTIMEOUT=1
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=1024                       # big history

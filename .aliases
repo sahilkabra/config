@@ -44,6 +44,12 @@ function note() {
 
 alias rmorig='find . -type f -name "*.orig" -exec rm {} \;'
 
+function gc() {
+    cd ~/src/github/
+    git clone https://github.com/${1}/${2}.git
+    cd ${2}
+}
+
 function gcm() {
     cd ~/src/my-github
     git clone git@github.com:sahilkabra/${1}.git

@@ -32,7 +32,6 @@ compton -b
 # to the left of the primary screen.
 #xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS-1
 
-
 xsetroot -solid '#333333'
 xsetroot -cursor_name left_ptr
 
@@ -60,6 +59,8 @@ trayer \
   --height 19 \
   --monitor primary \
   &
+
+${HOME}/.config/xresources.d/xinput
 
 # Now, finally, start xmonad
 # exec xmonad-session
