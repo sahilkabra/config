@@ -50,6 +50,10 @@ set laststatus=2
 " Delete all spaces at the end of line
 autocmd! bufwritepre * :%s/\s\+$//e
 
+" Use relativenumber in insert mode
+autocmd InsertEnter * :set relativenumber
+autocmd InsertLeave * :set norelativenumber
+
 execute "source" g:vim_config . "statusline.vim"
 
 " enable matching for if/else/html/xml etc

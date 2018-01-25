@@ -1,10 +1,16 @@
 ! do not scroll with output
 URxvt*scrollWithBuffer: false
 URxvt.scrollBar: false
-URxvt.font: xft:Hack:size=10
+URxvt.font: xft:Hack:size=10, \
+            xft:"DejaVu Sans Mono":style=Book:antialias=false:size=10, \
+            xft:"Ubuntu Mono":antialias=false:size=12, \
+            xft:FreeSerif:style=Regular, \
+            xft:Unifont:style=Medium:antialias=false
 URxvt.letterSpace: -1
 URxvt.pointerBlank: true
-URxvt.perl-ext-common: resize-font
+
+! Extensions
+URxvt.perl-ext-common: resize-font,keyboard-select
 
 ! Piatto Light
 ! URxvt.cursorColor: #414141

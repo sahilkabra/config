@@ -32,20 +32,6 @@ compton -b
 # to the left of the primary screen.
 #xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS-1
 
-#
-# STARTUP ICON TRAY
-#
-# trayer \
-#   --edge top \
-#   --align right \
-#   --SetDockType true \
-#   --SetPartialStrut true \
-#   --expand true \
-#   --width 5 \
-#   --transparent true \
-#   --tint 0x111111 \
-#   --height 17 \
-#   &
 
 xsetroot -solid '#333333'
 
@@ -56,6 +42,23 @@ xautolock -time 10 -locker slock &
 
 # multitouch gestures
 libinput-gestures &
+
+# enable all displays
+xrandr --output eDP1 --primary --output DVI-I-2-2 --above eDP1 --auto --output DVI-I-1-1 --right-of DVI-I-2-2 --auto
+
+# STARTUP ICON TRAY
+trayer \
+  --edge top \
+  --align right \
+  --SetDockType true \
+  --SetPartialStrut true \
+  --expand true \
+  --width 5 \
+  --transparent true \
+  --tint 0x111111 \
+  --height 17 \
+  --monitor primary \
+  &
 
 # Now, finally, start xmonad
 # exec xmonad-session

@@ -1,17 +1,6 @@
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle ':completion:*' matcher-list '' 'r:|[._-]=* r:|=*' '' 'l:|=* r:|=*'
-zstyle ':completion:*' preserve-prefix '//[^/]##/'
-zstyle ':completion::complete:*' use-cache on  # completion cache
-zstyle ':completion:*' cache-path ~/.zsh/cache
-zstyle ':completion:*' menu select
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # colorz
-zstyle :compinstall filename '/Users/sahil/.zshrc'
-
 autoload -Uz colors
 colors
 
-autoload -Uz compinit
-compinit
 zmodload -i zsh/complist
 
 # History
@@ -31,6 +20,7 @@ unsetopt beep
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
+export KEYTIMEOUT=1
 
 if [[ -z "${LANG}" ]]; then
     export LANG='en_US.UTF-8'
@@ -101,3 +91,17 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # zplug "docker/compose", use:contrib/completion/zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle :compinstall filename '/home/sahil.kabra/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall

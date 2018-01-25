@@ -14,9 +14,10 @@ Plug 'junegunn/fzf.vim'
 
 " vim folding
 Plug 'tmhedberg/SimpylFold'
-Plug 'flazz/vim-colorschemes'
 
 Plug 'jsfaint/gen_tags.vim'
+
+Plug 'NLKNguyen/papercolor-theme'
 
 "-------------------[ tools ]------------------------------------------------
 Plug 'scrooloose/nerdtree',
@@ -63,10 +64,9 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 
 "-------------------( typescript )------------------------------------------------
 " syntax highlight
-"Plug 'HerringtonDarkholme/yats.vim'
-Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.jsx']}
 " tsx syntax highlight
-Plug 'peitalin/vim-jsx-typescript'
+Plug 'peitalin/vim-jsx-typescript', {'for': ['typescript.jsx']}
 
 " ide features
 Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'typescript'}
@@ -96,6 +96,9 @@ Plug 'stephenway/postcss.vim', {'for': 'css'}
 " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 " Python Completion in VIM
 " Plug 'zchee/deoplete-jedi', {'for': 'python'}
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'flazz/vim-colorschemes'
+" Plug 'plan9-for-vimspace/acme-colors'
 
 
 
