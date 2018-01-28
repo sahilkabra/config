@@ -31,3 +31,5 @@ function note() {
     fi
 }
 
+alias rmorig='find . -type f -name "*.orig" -exec rm {} \;'
+

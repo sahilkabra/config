@@ -1,7 +1,6 @@
 # Helpful aliases
 alias wchrome='google-chrome --profile-directory="Profile 1"'
 alias pcrome='google-chrome --profile-directory="Default"'
-alias rmorig='find . -type f -name '*.orig' -exec rm {} \;'
 
 # Xplan Aliases
 alias xplan-src='cd $XPLAN_BASE/version/99.99.999'
