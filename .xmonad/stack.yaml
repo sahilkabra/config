@@ -47,9 +47,7 @@ extra-deps: []
 flags:
     xmobar:
         with_xft: true
-        with_iwlib: true
         with_xpm: true
-        with_threaded: true
 
 # Extra package databases containing global packages
 extra-package-dbs: []

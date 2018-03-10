@@ -53,7 +53,9 @@ Plug 'tpope/vim-fugitive'
 " Completion
 Plug 'roxma/nvim-completion-manager'
 
-Plug 'w0rp/ale'
+if !&diff
+    Plug 'w0rp/ale'
+endif
 
 "-------------------( javascript )------------------------------------------------
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -65,8 +67,6 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 "-------------------( typescript )------------------------------------------------
 " syntax highlight
 Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.jsx']}
-" tsx syntax highlight
-Plug 'peitalin/vim-jsx-typescript', {'for': ['typescript.jsx']}
 
 " ide features
 Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'typescript'}
@@ -99,6 +99,8 @@ Plug 'stephenway/postcss.vim', {'for': 'css'}
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'plan9-for-vimspace/acme-colors'
+" tsx syntax highlight
+" Plug 'peitalin/vim-jsx-typescript', {'for': ['typescript.jsx']}
 
 
 

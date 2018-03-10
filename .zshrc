@@ -22,6 +22,24 @@ export VISUAL='vim'
 export PAGER='less'
 export KEYTIMEOUT=1
 
+# completion settings
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+# ignore completion for non existing functions
+zstyle ':completion:*:functions' ignored-patterns '_*'
+# ignore parent on cd ..
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle :compinstall filename '/home/sahil.kabra/.zshrc'
+
+autoload -Uz compinit
+compinit
+
 if [[ -z "${LANG}" ]]; then
     export LANG='en_US.UTF-8'
 fi
@@ -92,16 +110,3 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# The following lines were added by compinstall
-
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-zstyle ':completion:*' menu select=2
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
-zstyle :compinstall filename '/home/sahil.kabra/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall

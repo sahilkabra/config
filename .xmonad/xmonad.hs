@@ -214,7 +214,7 @@ appSubmap = ((0, xK_a), submap . M.fromList $
   ])
 launchFirefox = ((0, xK_f), spawn "firefox")
 launchPersonalChrome = ((0, xK_c), spawn "google-chrome --profile-directory='Default'")
-launchPycharm = ((0, xK_p), spawn "wmname LG3D && pycharm")
+launchPycharm = ((0, xK_p), spawn "wmname LG3D && ${HOME}/.bin/pycharm")
 launchVsCode = ((0, xK_v), spawn "code-insiders")
 launchWorkChrome = ((0, xK_w), spawn "google-chrome --profile-directory='Profile 1'")
 screenshot = ((0, xK_Print), spawn "shutter")

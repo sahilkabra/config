@@ -1,3 +1,7 @@
+# global aliases - these can be used anywhere in the command
+alias -g ...='../..'
+alias -g LL='2>&1 | less'
+
 # ls helpers
 alias ls='LANG=C ls --color'
 alias lg='ls --group-directories-first -F'
@@ -19,7 +23,8 @@ alias tmux='tmux -2'
 # config files alias
 alias config='/usr/bin/git --git-dir=$HOME/src/config --work-tree=$HOME'
 
-alias ws='cd ~/src'
+hash -d -- ws=$HOME/src
+alias ws='cd ~ws'
 
 function note() {
     [ ! -f ~/.notes ] && touch ~/.notes
@@ -33,3 +38,8 @@ function note() {
 
 alias rmorig='find . -type f -name "*.orig" -exec rm {} \;'
 
+function gcm() {
+    cd ~/src/my-github
+    git clone git@github.com:sahilkabra/${1}.git
+    cd ${1}
+}

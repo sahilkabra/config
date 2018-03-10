@@ -34,6 +34,7 @@
     lsc = !"git logp --no-merges"
     lsca = !"git log --no-merges"
     lscm = !"git mini --no-merges"
+    lscc = !"git show --name-only"
 
     # Better log views
     lg1 = !"git lg1-specific"
@@ -71,4 +72,5 @@
 [credential]
     helper = cache --timeout 43200
 [core]
-	excludesfile = /home/sahil/.gitignore
+    excludesfile = $HOME/.gitignore
+	editor = /usr/bin/vim.tiny

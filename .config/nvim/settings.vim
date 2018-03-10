@@ -1,3 +1,4 @@
+syntax reset
 set encoding=utf-8
 set scrolloff=999
 set sidescrolloff=5
@@ -51,8 +52,8 @@ set laststatus=2
 autocmd! bufwritepre * :%s/\s\+$//e
 
 " Use relativenumber in insert mode
-autocmd InsertEnter * :set relativenumber
-autocmd InsertLeave * :set norelativenumber
+" autocmd InsertEnter * :set relativenumber
+" autocmd InsertLeave * :set norelativenumber
 
 execute "source" g:vim_config . "statusline.vim"
 
