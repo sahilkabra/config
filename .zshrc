@@ -72,7 +72,7 @@ source ${ZPLUG_HOME}/init.zsh
 zplug "mafredri/zsh-async", from:github
 # Pure Prompt
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "modules/environment", from:prezto
+#zplug "modules/environment", from:prezto
 zplug "modules/autosuggestions", from:prezto
 # {{{
     zstyle ':prezto:module:autosuggestions' color 'yes'
@@ -109,4 +109,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # zplug "docker/compose", use:contrib/completion/zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.sdkman.zsh ] && source ~/.sdkman.zsh
 

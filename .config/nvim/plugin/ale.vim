@@ -6,7 +6,7 @@ let g:ale_lint_on_text_changed = 'never'
 " do not run on enter
 let g:ale_lint_on_enter = 0
 " run ale on save
-let g:ale_lint_on_save = 0
+let g:ale_lint_on_save = 1
 " keep error list open
 let g:ale_open_list = 1
 " use location list

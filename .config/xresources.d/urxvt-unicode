@@ -1,8 +1,8 @@
 ! do not scroll with output
 URxvt*scrollWithBuffer: false
 URxvt.scrollBar: false
-URxvt.font: xft:Hack:size=9, \
-            xft:"DejaVu Sans Mono":style=Book:antialias=false:size=9, \
+URxvt.font: xft:Hack:size=12, \
+            xft:"DejaVu Sans Mono":style=Book:antialias=false:size=10, \
             xft:"Ubuntu Mono":antialias=false:size=11, \
             xft:FreeSerif:style=Regular, \
             xft:Unifont:style=Medium:antialias=false

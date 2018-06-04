@@ -48,7 +48,7 @@ xrandr --output eDP1 --primary --output DVI-I-2-2 --above eDP1 --auto --output D
 
 # STARTUP ICON TRAY
 trayer \
-  --edge top \
+  --edge bottom \
   --align right \
   --SetDockType true \
   --SetPartialStrut true \
@@ -56,7 +56,7 @@ trayer \
   --width 5 \
   --transparent true \
   --tint 0x111111 \
-  --height 17 \
+  --height 19 \
   --monitor primary \
   &
 

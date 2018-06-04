@@ -22,6 +22,7 @@ import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.SetWMName
 import XMonad.Layout.BinarySpacePartition (emptyBSP)
 import XMonad.Layout.Dishes
 import XMonad.Layout.DragPane
@@ -208,7 +209,7 @@ appSubmap = ((0, xK_a), submap . M.fromList $
     launchFirefox
   , launchPersonalChrome
   , launchPycharm
-  , launchSlack
+  , launchIntellij
   , launchVsCode
   , launchWorkChrome
   , screenshot
@@ -216,6 +217,7 @@ appSubmap = ((0, xK_a), submap . M.fromList $
 launchFirefox = ((0, xK_f), spawn "firefox")
 launchPersonalChrome = ((0, xK_c), spawn "google-chrome --profile-directory='Default'")
 launchPycharm = ((0, xK_p), spawn "wmname LG3D && ${HOME}/.bin/pycharm")
+launchIntellij = ((0, xK_i), spawn "${HOME}/.bin/idea")
 launchVsCode = ((0, xK_v), spawn "code-insiders")
 launchWorkChrome = ((0, xK_w), spawn "google-chrome --profile-directory='Profile 1'")
 screenshot = ((0, xK_Print), spawn "shutter")

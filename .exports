@@ -3,3 +3,6 @@ export STACK_BIN=${HOME}/.local/bin
 export CARGO_BIN=${HOME}/.cargo/bin
 export PATH=${HOME}/.bin:${CARGO_BIN}:${STACK_BIN}:$PATH
 export SAL_USE_VCLPLUGIN=gen
+
+# allow awt based apps to work
+export _JAVA_AWT_WM_NONREPARENTING=1

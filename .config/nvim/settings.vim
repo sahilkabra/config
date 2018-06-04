@@ -23,7 +23,7 @@ set smartindent
 set hidden
 set smarttab
 set number
-" set relativenumber
+set relativenumber
 set showmatch
 set wildignore=*.o,*~,*.bak,*.c,*.class,*.out,.git\*,bin\*
 set nowrap

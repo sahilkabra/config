@@ -8,13 +8,17 @@
 Config {
   -- Set font and default foreground/background colors. Note that
   -- the height of xmobar is controlled by the font you use.
-  font = "xft:Ubuntu Mono-10:antialias=true"
+  font = "xft:Ubuntu Mono-14:antialias=true"
   , lowerOnStart = True
-  , bgColor = "black"
-  , fgColor = "grey"
+  , bgColor = "#dddddd"
+  , fgColor = "black"
+
+  -- do not choose widest display
+  , pickBroadest = False
+  , allDesktops = False
 
   -- Position is top left, taking up 95% of screen.
-  , position = TopW L 95
+  , position = BottomW L 95
 
   -- list of commands which gather information about your system for
   -- presentation in the bar.

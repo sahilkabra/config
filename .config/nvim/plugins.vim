@@ -15,7 +15,11 @@ Plug 'junegunn/fzf.vim'
 " vim folding
 Plug 'tmhedberg/SimpylFold'
 
-Plug 'jsfaint/gen_tags.vim'
+" gtags support
+Plug 'vim-scripts/gtags.vim'
+
+" background tag generation
+Plug 'https://github.com/ludovicchabant/vim-gutentags'
 
 Plug 'NLKNguyen/papercolor-theme'
 
@@ -72,6 +76,7 @@ Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.jsx']}
 Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'typescript'}
 
 "-------------------( python )------------------------------------------------
+Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
 
 "-------------------( json )------------------------------------------------
 Plug 'elzr/vim-json', {'for': 'json'}
@@ -81,17 +86,16 @@ Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'stephenway/postcss.vim', {'for': 'css'}
 
 "-------------------[ elm ]------------------------------------------------
-" Plug 'elmcast/elm-vim', {'for': 'elm'}
+Plug 'elmcast/elm-vim', {'for': 'elm'}
 
+"-------------------( kotlin )------------------------------------------------
+Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 "-------------------[ testing ]------------------------------------------------
 
 "-------------------[ commented ]------------------------------------------------
 " Plug 'tpope/vim-surround'
-" Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
 " language client for auto completion
 " Plug 'autozimu/LanguageClient-neovim', { 'do' : ':UpdateRemotePlugins' }
-" background tag generation
-" Plug 'https://github.com/ludovicchabant/vim-gutentags'
 " YCM type omni complete plugin
 " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 " Python Completion in VIM
@@ -101,6 +105,7 @@ Plug 'stephenway/postcss.vim', {'for': 'css'}
 " Plug 'plan9-for-vimspace/acme-colors'
 " tsx syntax highlight
 " Plug 'peitalin/vim-jsx-typescript', {'for': ['typescript.jsx']}
+" Plug 'jsfaint/gen_tags.vim'
 
 
 
