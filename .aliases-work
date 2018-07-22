@@ -10,8 +10,7 @@ alias xplan-log='xplan-log() { cd sites/$1/log };xplan-log'
 alias xplan-tail-log='xplan-tail-log() { tail -F sites/$1/log/server.log };xplan-tail-log'
 # alias xplan-nose='XFUDGE_SITENAME=test nosetests -s -c ${XPLAN_BASE}/version/9.999.999/src/py/nose-developer.cfg'
 function xplan-nose() {
-    cd ~xplan-src/src/py
-    XFUDGE_SITENAME=test pytest $1
+    XFUDGE_SITENAME=test pytest "$@"
 }
 
 # Labs
@@ -44,3 +43,6 @@ function sqlserverfts-start() {
 }
 alias sqlserverfts-stop='docker stop sqlserver-fts'
 
+function xdr() {
+    ~/.bin/xdr.sh
+}
