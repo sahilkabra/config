@@ -2,6 +2,6 @@
 " colorscheme nofrils-light
 runtime macros/sandwich/keymap/surround.vim
 
-autocmd FileType typescript :TSStart
+"autocmd FileType typescript :TSStart
 colorscheme codefocus
 

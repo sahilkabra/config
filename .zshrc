@@ -78,6 +78,7 @@ zplug "modules/autosuggestions", from:prezto
     zstyle ':prezto:module:autosuggestions' color 'yes'
     zstyle ':prezto:module:autosuggestions:color' found 'fg=red'
 # }}}
+zplug "docker/compose", use:contrib/completion/zsh
 
 export NVM_LAZY_LOAD=true
 zplug "lukechilds/zsh-nvm"

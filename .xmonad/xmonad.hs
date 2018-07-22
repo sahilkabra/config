@@ -91,7 +91,7 @@ myModMask       = lAltKey
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "x-terminal-emulator"
+myTerminal      = "urxvt"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -306,7 +306,8 @@ systemSubmap = ((0, xK_s), submap . M.fromList $
 lockCommand = "xset dpms force off; slock"
 locker = ((0, xK_l), spawn lockCommand)
 suspend = ((0, xK_s), spawn "systemctl suspend")
-poweroff = ((0, xK_h), spawn "poweroff")
+-- suspend = ((0, xK_s), spawn "sudo s2ram -f")
+poweroff = ((0, xK_h), spawn "sudo poweroff")
 sysrestart = ((0, xK_r), spawn "reboot")
 -- switch keyboard layout
 switchKbLayout = ((0, xK_k), spawn "$HOME/.bin/switch-layout")

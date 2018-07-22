@@ -17,6 +17,12 @@ alias less='less -FX'
 # who uses vi!
 alias vi='vim'
 
+# easy clone from aur
+function gcaur() {
+    git clone https://aur.archlinux.org/${1}.git ${HOME}/src/gcaur/${1}
+    cd ${HOME}/src/gcaur/${1}
+}
+
 # tmux always with 256 colors
 alias tmux='tmux -2'
 

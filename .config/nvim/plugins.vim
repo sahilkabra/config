@@ -55,7 +55,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 
 " Completion
-Plug 'roxma/nvim-completion-manager'
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 
 if !&diff
     Plug 'w0rp/ale'
@@ -73,10 +73,13 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.jsx']}
 
 " ide features
-Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins', 'for': 'typescript'}
+"Plug 'mhartington/nvim-typescript'
+", {'do': './install.sh', 'for': ['typescript', 'typescript.jsx']}
 
 "-------------------( python )------------------------------------------------
 Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
+
+Plug 'zchee/deoplete-jedi', {'for': 'python'}
 
 "-------------------( json )------------------------------------------------
 Plug 'elzr/vim-json', {'for': 'json'}
@@ -90,22 +93,29 @@ Plug 'elmcast/elm-vim', {'for': 'elm'}
 
 "-------------------( kotlin )------------------------------------------------
 Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
+
+"-------------------( java )------------------------------------------------
+Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
+
 "-------------------[ testing ]------------------------------------------------
 
 "-------------------[ commented ]------------------------------------------------
 " Plug 'tpope/vim-surround'
-" language client for auto completion
-" Plug 'autozimu/LanguageClient-neovim', { 'do' : ':UpdateRemotePlugins' }
 " YCM type omni complete plugin
-" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+" Plug 'roxma/nvim-completion-manager'
 " Python Completion in VIM
-" Plug 'zchee/deoplete-jedi', {'for': 'python'}
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'plan9-for-vimspace/acme-colors'
 " tsx syntax highlight
 " Plug 'peitalin/vim-jsx-typescript', {'for': ['typescript.jsx']}
 " Plug 'jsfaint/gen_tags.vim'
+
+" language client for auto completion
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do' : 'bash install.sh'
+"    \}
 
 
 
