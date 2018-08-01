@@ -1,6 +1,8 @@
 [user]
     name = Sahil Kabra
     email = Sahil.Kabra@iress.com
+[protocol]
+    version = 2
 [url "https://"]
     insteadOf = git://
 [merge]

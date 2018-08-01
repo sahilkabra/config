@@ -214,13 +214,13 @@ appSubmap = ((0, xK_a), submap . M.fromList $
   , launchWorkChrome
   , screenshot
   ])
-launchFirefox = ((0, xK_f), spawn "firefox")
-launchPersonalChrome = ((0, xK_c), spawn "google-chrome --profile-directory='Default'")
+launchFirefox = ((0, xK_f), spawn "${HOME}/.bin/firefox")
+launchPersonalChrome = ((0, xK_c), spawn "${HOME}/.bin/google-chrome --profile-directory='Default'")
 launchPycharm = ((0, xK_p), spawn "wmname LG3D && ${HOME}/.bin/pycharm")
-launchIntellij = ((0, xK_i), spawn "${HOME}/.bin/idea")
-launchVsCode = ((0, xK_v), spawn "code-insiders")
-launchWorkChrome = ((0, xK_w), spawn "google-chrome --profile-directory='Profile 1'")
-screenshot = ((0, xK_Print), spawn "shutter")
+launchIntellij = ((0, xK_i), spawn "wmname LG3D && ${HOME}/.bin/idea")
+launchVsCode = ((0, xK_v), spawn "${HOME}/.bin/code")
+launchWorkChrome = ((0, xK_w), spawn "${HOME}/.bin/google-chrome --profile-directory='Profile 1'")
+screenshot = ((0, xK_x), spawn "${HOME}/.bin/screenshot")
 
 ------------------------------------------------------------------------
 -- window, come here!
@@ -307,7 +307,7 @@ lockCommand = "xset dpms force off; slock"
 locker = ((0, xK_l), spawn lockCommand)
 suspend = ((0, xK_s), spawn "systemctl suspend")
 -- suspend = ((0, xK_s), spawn "sudo s2ram -f")
-poweroff = ((0, xK_h), spawn "sudo poweroff")
+poweroff = ((0, xK_h), spawn "poweroff")
 sysrestart = ((0, xK_r), spawn "reboot")
 -- switch keyboard layout
 switchKbLayout = ((0, xK_k), spawn "$HOME/.bin/switch-layout")

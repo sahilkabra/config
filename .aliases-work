@@ -5,7 +5,9 @@ alias pcrome='google-chrome --profile-directory="Default"'
 # Xplan Aliases
 hash -d -- xplanbase=~ws/xplanbase
 hash -d -- xplan-src=~xplanbase/version/99.99.999
+hash -d -- xplan-sparkle=~xplan-src/data/wwwroot/js/xpt/spa
 alias xplan-src='cd ~xplan-src'
+alias xplan-sparkle='cd ~xplan-sparkle'
 alias xplan-log='xplan-log() { cd sites/$1/log };xplan-log'
 alias xplan-tail-log='xplan-tail-log() { tail -F sites/$1/log/server.log };xplan-tail-log'
 # alias xplan-nose='XFUDGE_SITENAME=test nosetests -s -c ${XPLAN_BASE}/version/9.999.999/src/py/nose-developer.cfg'

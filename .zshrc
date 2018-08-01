@@ -110,5 +110,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # zplug "docker/compose", use:contrib/completion/zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.sdkman.zsh ] && source ~/.sdkman.zsh
 

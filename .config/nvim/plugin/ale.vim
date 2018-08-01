@@ -1,5 +1,6 @@
 let g:ale_linters = {
-            \   'python': ['flake8']
+            \   'python': ['flake8'],
+            \   'typescript': ['tsserver', 'tslint']
             \}
 " do not run on typing
 let g:ale_lint_on_text_changed = 'never'
@@ -19,9 +20,8 @@ let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = [
-            \ 'prettier', 'eslint'
+            \ 'eslint'
             \]
-let g:ale_javascript_prettier_options = '--single-quote'
 let g:ale_fixers['typescript'] = [
             \ 'prettier', 'tslint'
             \]

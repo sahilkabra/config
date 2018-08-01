@@ -57,9 +57,7 @@ Plug 'tpope/vim-fugitive'
 " Completion
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 
-if !&diff
-    Plug 'w0rp/ale'
-endif
+Plug 'w0rp/ale'
 
 "-------------------( javascript )------------------------------------------------
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -75,6 +73,10 @@ Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.jsx']}
 " ide features
 "Plug 'mhartington/nvim-typescript'
 ", {'do': './install.sh', 'for': ['typescript', 'typescript.jsx']}
+
+"-------------------( scala )------------------------------------------------
+Plug 'ensime/ensime-vim', {'for': 'scala', 'do': ':UpdateRemotePlugins'}                     " Python organise imports
+Plug 'derekwyatt/vim-scala'
 
 "-------------------( python )------------------------------------------------
 Plug 'fisadev/vim-isort', {'for': 'python'}                     " Python organise imports
