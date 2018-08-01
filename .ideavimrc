@@ -1,0 +1,30 @@
+let mapleader=','
+map , <leader>
+
+" Fast Saving
+nnoremap <leader>fs :w!<cr>
+
+nnoremap <Space> :
+vnoremap <Space> :
+
+inoremap <C-c> <Esc>
+
+" Moving between splits
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Split line at cursor
+nnoremap <leader>cr i<CR><Esc>
+nnoremap <leader>ncr J
+
+" Better movement
+nnoremap <tab> %
+vnoremap <tab> %
+nnoremap <leader>ls :action SearchEverywhere<cr>
+
+
+set incsearch
+set smartcase
+set relativenumber
