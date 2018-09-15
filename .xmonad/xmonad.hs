@@ -211,14 +211,15 @@ appSubmap = ((0, xK_a), submap . M.fromList $
   , launchPycharm
   , launchIntellij
   , launchVsCode
-  , screenshot
+  , screenshotP
   ])
-launchFirefox = ((0, xK_f), spawn "firefox")
+launchFirefox = ((0, xK_f), spawn "${HOME}/.bin/firefox")
 launchIntellij = ((0, xK_i), spawn "${HOME}/.bin/idea")
-launchPersonalChrome = ((0, xK_c), spawn "chromium")
+launchPersonalChrome = ((0, xK_c), spawn "${HOME}/.bin/chrome")
 launchPycharm = ((0, xK_p), spawn "wmname LG3D && pycharm")
-launchVsCode = ((0, xK_v), spawn "code-insiders")
-screenshot = ((0, xK_Print), spawn "shutter")
+launchVsCode = ((0, xK_v), spawn "${HOME}/.bin/code")
+screenshotP = ((0, xK_Print), spawn "${HOME}/.bin/screenshot")
+screenshot = ((0, xK_x), spawn "${HOME}/.bin/screenshot")
 
 ------------------------------------------------------------------------
 
@@ -489,7 +490,8 @@ help = unlines ["The modifier key is 'lalt'.",
     "    w                              Launch Work Chrome",
     "    p                              Launch Pycharm",
     "    s                              Launch Slack",
-    "    print                          Launch Shutter for screenshot",
+    "    print                          Launch screenshot",
+    "    x                              Launch screenshot",
     "    v                              Launch VSCode",
     "",
     "-- Mouse bindings: default actions bound to mouse events",

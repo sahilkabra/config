@@ -65,4 +65,4 @@ ${HOME}/.config/xresources.d/xinput
 # Now, finally, start xmonad
 # exec xmonad-session
 # exec $HOME/.cabal/bin/xmonad
-exec $HOME/.local/bin/xmonad
+exec ssh-agent $HOME/.local/bin/xmonad
