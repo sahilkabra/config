@@ -61,6 +61,12 @@ if !&diff
     Plug 'w0rp/ale'
 endif
 
+" language client for auto completion
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do' : 'bash install.sh'
+    \}
+
 "-------------------( javascript )------------------------------------------------
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
@@ -111,11 +117,6 @@ Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
 " Plug 'peitalin/vim-jsx-typescript', {'for': ['typescript.jsx']}
 " Plug 'jsfaint/gen_tags.vim'
 
-" language client for auto completion
-"Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do' : 'bash install.sh'
-"    \}
 
 
 
