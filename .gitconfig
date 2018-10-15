@@ -1,6 +1,6 @@
 [user]
     name = Sahil Kabra
-    email = Sahil.Kabra@iress.com.au
+    email = sahil.kabra@gmail.com
 [url "https://"]
     insteadOf = git://
 [merge]
@@ -72,5 +72,5 @@
 [credential]
     helper = cache --timeout 43200
 [core]
-    excludesfile = $HOME/.gitignore
-	editor = /usr/bin/vi
+    excludesfile = $HOME/.config/gitignore
+    editor = vim

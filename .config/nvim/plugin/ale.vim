@@ -27,6 +27,7 @@ let g:ale_fixers['typescript'] = [
             \]
 let g:ale_fixers['json'] = []
 let g:ale_fixers['python'] = ['autopep8', 'isort']
+let g:ale_fixers['rust'] = ['rustfmt']
 
 " disable ale completion
 let g:ale_completion_enabled = 0
